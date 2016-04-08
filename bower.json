@@ -1,0 +1,23 @@
+{
+  "name": "bricklayer",
+  "authors": [
+    "Adem İlter <ademilter@gmail.com>",
+    "Fatih Kadir Akın <fatihkadirakin@gmail.com>"
+  ],
+  "description": "Lightweight and strong Masonry alternative",
+  "main": "bricklayer.js",
+  "keywords": [
+    "masonry",
+    "bricklayer",
+    "layer"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "http://github.com/ademilter/bricklayer",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

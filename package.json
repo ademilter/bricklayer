@@ -1,0 +1,23 @@
+{
+  "name": "bricklayer",
+  "version": "0.0.1",
+  "description": "Lightweight and strong Masonry alternative",
+  "main": "bricklayer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ademilter/bricklayer.git"
+  },
+  "keywords": [
+    "masonry",
+    "bricklayer"
+  ],
+  "author": "Adem İlter <ademilter@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ademilter/bricklayer/issues"
+  },
+  "homepage": "https://github.com/ademilter/bricklayer#readme"
+}
