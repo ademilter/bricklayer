@@ -8,8 +8,7 @@
   "main": "bricklayer.js",
   "keywords": [
     "masonry",
-    "bricklayer",
-    "layer"
+    "bricklayer"
   ],
   "license": "GPL-3.0",
   "homepage": "http://github.com/ademilter/bricklayer",
