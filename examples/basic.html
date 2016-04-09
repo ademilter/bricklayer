@@ -1,15 +1,32 @@
-<html>
-  <head>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
     <link rel="stylesheet" href="../dist/bricklayer.css">
-    <script src="../src/bricklayer.js"></script>
-  </head>
-  <body>
-    <section class="bricklayer">
+</head>
+<body>
 
-    </section>
+<section class="container"></section>
 
-    <script>
 
-    </script>
-  </body>
+<script src="//code.jquery.com/jquery-2.2.3.min.js"></script>
+<script src="demo.js"></script>
+<script src="../src/bricklayer.js"></script>
+
+<script>
+    var $container = $(".container").bricklayer({
+        effect: {
+            type: "fadein",
+            duration: "0.3s"
+        },
+        beforeAppend: function (container, items) {
+        },
+        afterAppend: function (container, items) {
+        },
+    })
+</script>
+
+</body>
 </html>

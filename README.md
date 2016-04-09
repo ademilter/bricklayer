@@ -25,8 +25,6 @@ bower install bricklayer
 
 ```js
 var $bricklayer = $(".container").bricklayer({
-  // Elements to be layed as bricks.
-  itemSelector: ".article",
 
   // The effect options when a new brick appended.
   effect: {
@@ -34,9 +32,14 @@ var $bricklayer = $(".container").bricklayer({
     duration: "0.3s"
   },
 
+  // Add new elements
+  appendElements: function(container, [item]) { },
+  prependElements: function(container, [item]) { },
+
   // Callback hooks to make your bricklayer more extensive.
-  beforeAppend: function () {  },
-  afterAppend: function () {  },
+  beforeAppend: function (container, [item]) { },
+  afterAppend: function (container, [item]) { }
+
 })
 ```
 
