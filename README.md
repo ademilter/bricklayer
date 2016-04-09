@@ -6,7 +6,7 @@ Lightweight cascading grid layout library. Inspired and a lighter alternative to
 
  - **Simpler** than any other cascading grid layout tools.
  - **Lightweight**, no fat.
- - **Framework agnostic**. Optionally integrates with jQuery.
+ - Integrates with **jQuery** seamlessly.
  - **Responsive** support.
 
 ## Installation
@@ -23,7 +23,22 @@ bower install bricklayer
 
 ## Usage
 
-> To be defined
+```js
+var $bricklayer = $(".container").bricklayer({
+  // Elements to be layed as bricks.
+  itemSelector: ".article",
+
+  // The effect options when a new brick appended.
+  effect: {
+    type: "fadein",
+    duration: "0.3s"
+  },
+
+  // Callback hooks to make your bricklayer more extensive.
+  beforeAppend: function () {  },
+  afterAppend: function () {  },
+})
+```
 
 ## Documentation
 

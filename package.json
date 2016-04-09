@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/ademilter/bricklayer/issues"
   },
-  "homepage": "https://github.com/ademilter/bricklayer#readme"
+  "homepage": "https://github.com/ademilter/bricklayer#readme",
+  "dependencies": {
+    "jquery": "^2.2.3"
+  }
 }
