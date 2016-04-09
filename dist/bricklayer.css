@@ -1,0 +1,41 @@
+.bricklayer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (min-width: 480px) {
+  .bricklayer-sizer {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .bricklayer-sizer {
+    width: 33.333%;
+  }
+}
+
+.bricklayer-column {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.bricklayer-column div {
+  margin-bottom: 20px;
+}

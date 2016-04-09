@@ -1,0 +1,30 @@
+$container-max-width: 1200px;
+$column-gutter: 20px;
+
+.bricklayer {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  &-sizer {
+    @media screen and (min-width: 480px) {
+      width: 50%;
+    }
+
+    @media screen and (min-width: 980px) {
+      width: 33.333%;
+    }
+  }
+
+  &-column {
+    flex: 1;
+    padding-left: $column-gutter / 2;
+    padding-right: $column-gutter / 2;
+
+    div {
+      margin-bottom: 20px;
+    }
+  }
+}
