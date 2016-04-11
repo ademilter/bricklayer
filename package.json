@@ -2,7 +2,7 @@
   "name": "bricklayer",
   "version": "0.0.4",
   "description": "Lightweight and strong Masonry alternative",
-  "main": "bricklayer.js",
+  "main": "dist/bricklayer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

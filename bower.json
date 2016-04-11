@@ -5,7 +5,7 @@
     "Fatih Kadir Akın <fatihkadirakin@gmail.com>"
   ],
   "description": "Lightweight and strong Masonry alternative",
-  "main": "bricklayer.js",
+  "main": "dist/bricklayer.js",
   "keywords": [
     "masonry",
     "bricklayer"
