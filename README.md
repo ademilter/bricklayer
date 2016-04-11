@@ -1,10 +1,10 @@
 # Bricklayer
 
-**
-```
-⚠️  This plugin is hardly in development right now, please do not use until it's released.
-```
-**
+---
+
+❗ **This plugin is hardly in development right now, please do not use until it's released.**
+
+---
 
 Lightweight cascading grid layout library. Inspired and a lighter alternative to [Masonry](http://masonry.desandro.com/)
 
