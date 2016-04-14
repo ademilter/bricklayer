@@ -11,7 +11,7 @@ Lightweight cascading grid layout library. Inspired and a lighter alternative to
 
 ## Installation
 
-```
+```html
 <link rel="stylesheet" href="bricklayer.css">
 <script src="bricklayer.js"></script>
 ```
