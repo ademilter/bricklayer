@@ -5,7 +5,7 @@ Lightweight cascading grid layout library. Inspired and a lighter alternative to
 ## Why Bricklayer?
 
  - **Simpler** than any other cascading grid layout tools.
- - **Lightweight**, no fat. **(1.1KB gzipped)
+ - **Lightweight**, no fat. **(1.1KB gzipped)**
  - Integrates with **jQuery** seamlessly.
  - **Responsive** support with no glitch.
 
