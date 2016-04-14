@@ -33,7 +33,7 @@ gulp.task("js", function () {
         .pipe(source('./dist/bricklayer.js'))
         .pipe(gulp.dest("./"));
 
-    gulp.src("./dist/*.js")
+    gulp.src("./dist/bricklayer.js")
         .pipe(uglify())
         .pipe(rename({suffix: ".min"}))
         .pipe(gulp.dest("./dist"))

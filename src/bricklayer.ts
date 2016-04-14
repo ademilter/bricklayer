@@ -10,10 +10,6 @@ module Bricklayer {
   const DEFAULTS : IOptions = {
     rulerClassName: "bricklayer-column-sizer",
     columnClassName: "bricklayer-column"
-    afterAppend: null,
-    beforeAppend: null,
-    afterPrepend: null,
-    beforePrepend: null,
   }
 
   abstract class SimpleElement {
