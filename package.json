@@ -15,7 +15,7 @@
     "bricklayer"
   ],
   "author": "Adem İlter <ademilter@gmail.com>",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ademilter/bricklayer/issues"
   },
@@ -25,9 +25,14 @@
   },
   "devDependencies": {
     "browser-sync": "^2.11.2",
+    "browserify": "^13.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-csslint": "^0.3.0",
-    "gulp-sass": "^2.2.0"
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.3",
+    "tsify": "^0.14.7",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

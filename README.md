@@ -1,21 +1,22 @@
 # Bricklayer
 
----
-
-❗ **This plugin is hardly in development right now, please do not use until it's released.**
-
----
-
 Lightweight cascading grid layout library. Inspired and a lighter alternative to [Masonry](http://masonry.desandro.com/)
 
 ## Why Bricklayer?
 
  - **Simpler** than any other cascading grid layout tools.
- - **Lightweight**, no fat.
+ - **Lightweight**, no fat. **(1.1KB gzipped)
  - Integrates with **jQuery** seamlessly.
- - **Responsive** support.
+ - **Responsive** support with no glitch.
 
 ## Installation
+
+```
+<link rel="stylesheet" href="bricklayer.css">
+<script src="bricklayer.js"></script>
+```
+
+If you are using modular JavaScript, you can use **NPM** or **Bower**
 ```
 npm install bricklayer # using npm
 bower install bricklayer # or using bower
@@ -40,14 +41,14 @@ bower install bricklayer # or using bower
 
 ```css
 @media screen and (min-width: 1200px) {
-  .bricklayer-column-size {
+  .bricklayer-column-sizer {
     /* divide by 3. */
     width: 33.3%;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .bricklayer-column-size {
+  .bricklayer-column-sizer {
     /* divide by 2. */
     width: 50%;
   }
@@ -57,63 +58,35 @@ bower install bricklayer # or using bower
 - Make them bricks using `bricklayer` plugin.
 
 ```js
-$(".bricklayer").bricklayer()
+var bricklayer = $(".bricklayer").bricklayer()
 ```
 
 - Add bricks dynamically
 
 ```js
-$(".bricklayer").bricklayer("appendElements", [
+bricklayer.append(
+  $("<div>My awesome content</div>")
+)
+```
+
+You can also add multiple bricks at once:
+
+```js
+bricklayer.append([
   $("<div>My awesome content</div>"),
   $("<div>My another awesome but very long content</div>")
 ])
 ```
 
-## Effects
-
-```js
-var $bricklayer = $(".container").bricklayer({
-  // The effect options when a new brick appended.
-  effect: {
-    type: "fadein",
-    duration: "0.3s"
-  },
-})
-```
-
-## Append and Prepend Elements
-
-```js
-$bricklayer.appendElements(container, [item])
-
-// Alternatively you can trigger as jQuery plugin.
-$(".bricklayer").bricklayer("appendElements", [item])
-```
-
-```js
-$bricklayer.prependElements(container, [item])
-
-// Alternatively you can trigger as jQuery plugin.
-$(".bricklayer").bricklayer("prependElements", [item])
-```
-
 ## Callbacks
 
-```js
-$(".bricklayer").bricklayer({
-  // Callback hooks to make your bricklayer more extensive.
-  beforeAppend: function (itemToAdd) { },
-  afterAppend: function (addedItem) { }
-})
-```
-
-You can alternatively add listeners lazily.
+You can add listeners.
 
 ```js
-$bricklayer.on("bricklayer.beforeAppend", function () {})
-$bricklayer.on("bricklayer.afterAppend", function () {})
+bricklayer.on("bricklayer.afterAppend", function () {})
+bricklayer.on("bricklayer.beforeAppend", function () {})
 ```
 
-## Documentation
+## License
 
-> To be defined
+MIT

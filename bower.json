@@ -10,7 +10,7 @@
     "masonry",
     "bricklayer"
   ],
-  "license": "GPL-3.0",
+  "license": "MIT",
   "homepage": "http://github.com/ademilter/bricklayer",
   "ignore": [
     "**/.*",

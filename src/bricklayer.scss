@@ -1,20 +1,28 @@
-$container-max-width: 1200px;
-$column-gutter: 20px;
+$container-max-width: 100%;
+$column-gutter: 10px;
 
 .bricklayer {
   max-width: $container-max-width;
-  margin: 0 auto;
+  margin: $column-gutter auto;
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  flex-wrap: wrap;
 
-  &-sizer {
-    @media screen and (min-width: 480px) {
+  &-column-sizer {
+    width: 100%;
+    display: none;
+
+    @media screen and (min-width: 640px) {
       width: 50%;
     }
 
     @media screen and (min-width: 980px) {
       width: 33.333%;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 25%;
     }
   }
 
@@ -22,9 +30,48 @@ $column-gutter: 20px;
     flex: 1;
     padding-left: $column-gutter / 2;
     padding-right: $column-gutter / 2;
-
-    div {
-      margin-bottom: 20px;
-    }
   }
 }
+
+
+.box {
+  margin-bottom: $column-gutter;
+  animation-duration: .3s;
+
+  &.is-append {
+    animation-name: animAppend, animFade;
+  }
+
+  &.is-prepend {
+    animation-name: animPrepend, animFade;
+  }
+}
+
+@keyframes animAppend{
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes animPrepend{
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes animFade{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+

@@ -5,28 +5,36 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="../dist/bricklayer.css">
+    <style>
+      .buttons {
+        z-index: 1;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 20px 30px;
+        background-color: black;
+      }
+
+      .buttons button {
+        background-color: white;
+        color: black;
+        border: 0;
+        padding: 5px 10px;
+      }
+    </style>
 </head>
 <body>
 
-<section class="container"></section>
+<section class="bricklayer"></section>
+<div class="buttons">
+  <button data-append>APPEND</button>
+  <button data-prepend>PREPEND</button>
+  <button data-append-multiple>APPEND MULTIPLE</button>
+</div>
 
-
-<script src="//code.jquery.com/jquery-2.2.3.min.js"></script>
-<script src="demo.js"></script>
-<script src="../src/bricklayer.js"></script>
-
-<script>
-    var $container = $(".container").bricklayer({
-        effect: {
-            type: "fadein",
-            duration: "0.3s"
-        },
-        beforeAppend: function (container, items) {
-        },
-        afterAppend: function (container, items) {
-        },
-    })
-</script>
+<script src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script src="../dist/bricklayer.js"></script>
+<script src="./demo.js"></script>
 
 </body>
 </html>
