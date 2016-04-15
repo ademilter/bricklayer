@@ -1,72 +1,65 @@
 function newBox() {
-  var randomColor = '#' + '0123456789abcdef'.split('').map(function (v, i, a) {
-      return i > 5 ? null : a[Math.floor(Math.random() * 16)]
-    }).join('');
-
-  var heights = [50,150, 190, 230];
+  var randomColor = '#' + Math.random().toString(16).substr(-6);
+  var heights = [50, 90, 150, 190, 230];
   var randomHeight = heights[Math.floor(Math.random() * heights.length)];
-
-  var $Box = $("<div class='box' />").css({
-    backgroundColor: randomColor,
-    height: randomHeight
-  });
-  return $Box;
+  var box = document.createElement('div');
+  box.className = 'box';
+  box.style.backgroundColor = randomColor;
+  box.style.height = randomHeight + "px";
+  return box;
 }
 
-////////////////////////////////////////////////////////////
+var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
 
-//for (i = 0; i < 0; i++) {
-//var $Box = newBox();
-//$(".bricklayer").append($Box.text(i));
-//}
+bricklayer.on("breakpoint", function (e) {
+  console.log(e.detail.columnCount);
+})
 
-var bricklayer = $('.bricklayer').bricklayer()
-  .onBreakpoint(function (e, size) {
-    console.log(size);
-  })
-  .onAfterPrepend(function (e, el) {
-    $(el).addClass("is-prepend");
-    setTimeout(function () {
-      $(el).removeClass("is-prepend");
-    }, 500);
-  })
-  .onAfterAppend(function (e, el) {
-    $(el).addClass("is-append");
-    setTimeout(function () {
-      $(el).removeClass("is-append");
-    }, 500);
-  });
+bricklayer.on("afterPrepend", function (e) {
+  var el = e.detail.item;
+  el.classList.add('is-prepend');
+  setTimeout(function () {
+    el.classList.remove('is-prepend');
+  }, 500);
+})
 
-////////////////////////////////////////////////////////////
-
-$("button").click(function () {
-
-  var $Box = newBox();
-  $Box.text(bricklayer.elements.length + 1);
-
-  if ($(this).is("[data-append]")) {
-    bricklayer.append($Box);
-    $(document.body).animate({scrollTop: document.body.scrollHeight})
-  }
-
-  if ($(this).is("[data-prepend]")) {
-    bricklayer.prepend($Box);
-    $(document.body).animate({scrollTop: 0})
-  }
-
-  if ($(this).is("[data-append-multiple]")) {
-    var $AnotherBox = newBox();
-    $AnotherBox.text(bricklayer.elements.length + 2);
-    bricklayer.append([$Box, $AnotherBox]);
-    $(document.body).animate({scrollTop: document.body.scrollHeight})
-  }
-
+bricklayer.on("afterAppend", function (e) {
+  var el = e.detail.item;
+  el.classList.add('is-append');
+  setTimeout(function () {
+    el.classList.remove('is-append');
+  }, 500);
 });
 
-for (var i = 0; i < 10; i++) {
-  setTimeout(function () {
-    var $box = newBox()
-    $box.text(bricklayer.elements.length + 1);
-    bricklayer.append($box)
-  }, (i+1)*100)
+////////////////////////////////////////////////////////////
+
+var buttons = document.querySelectorAll("button");
+
+function goToScroll(value) {
+  document.body.scrollTop = value
 }
+Array.prototype.slice.call(buttons).forEach(function (button) {
+  button.addEventListener('click', function (e) {
+    var button = e.target
+    var box = newBox();
+
+    box.innerHTML = (bricklayer.elements.length + 1);
+
+    if (button.hasAttribute("data-append")) {
+      bricklayer.append(box);
+      goToScroll(document.body.scrollHeight)
+    }
+
+    if (button.hasAttribute("data-prepend")) {
+      bricklayer.prepend(box);
+      goToScroll(0)
+    }
+
+    if (button.hasAttribute("data-append-multiple")) {
+      var anotherBox = newBox();
+      anotherBox.innerHTML = (bricklayer.elements.length + 2);
+      bricklayer.append([box, anotherBox]);
+      goToScroll(document.body.scrollHeight)
+    }
+  });
+});
