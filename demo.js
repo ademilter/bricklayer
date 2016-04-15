@@ -3,7 +3,7 @@ function newBox() {
       return i > 5 ? null : a[Math.floor(Math.random() * 16)]
     }).join('');
 
-  var heights = [50,150, 190, 230, 300, 350];
+  var heights = [50,150, 190, 230];
   var randomHeight = heights[Math.floor(Math.random() * heights.length)];
 
   var $Box = $("<div class='box' />").css({
@@ -19,8 +19,6 @@ function newBox() {
 //var $Box = newBox();
 //$(".bricklayer").append($Box.text(i));
 //}
-
-// TODO: eklediği item için scroll etsin mi?
 
 var bricklayer = $('.bricklayer').bricklayer()
   .onBreakpoint(function (e, size) {
