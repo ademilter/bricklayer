@@ -17,8 +17,10 @@ Lightweight cascading grid layout library. Inspired and a lighter alternative to
 ## Installation
 
 ```html
-<link rel="stylesheet" href="bricklayer.css">
-<script src="bricklayer.js"></script>
+<link rel="stylesheet" href="//rawgit.com/ademilter/bricklayer/master/dist/bricklayer.css">
+
+<script src="//code.jquery.com/jquery-2.2.3.min.js"></script>
+<script src="//rawgit.com/ademilter/bricklayer/master/dist/bricklayer.min.js"></script>
 ```
 
 If you are using modular JavaScript, you can use **NPM** or **Bower**
