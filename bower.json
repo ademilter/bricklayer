@@ -13,12 +13,12 @@
   "license": "MIT",
   "homepage": "http://github.com/ademilter/bricklayer",
   "ignore": [
-    "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests",
-    "examples"
+    "examples",
+    "screenshot.gif"
   ],
   "version": "0.1.2",
   "dependencies": {
