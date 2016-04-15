@@ -1,5 +1,3 @@
-/// <reference path="typings/jquery.d.ts" />
-
 interface IOptions {
   rulerClassName  : string
   columnClassName : string
@@ -7,160 +5,196 @@ interface IOptions {
 
 module Bricklayer {
 
+  // Helper Functions
+  function toArray(arrayLike : {length : number}) {
+    return [].slice.call(arrayLike)
+  }
+
+  function triggerEvent(el, eventName : string, data) {
+    if (window["CustomEvent"]) {
+      var event = new CustomEvent(eventName, {detail: data});
+    } else {
+      var event = document.createEvent('CustomEvent');
+      event.initCustomEvent(eventName, true, true, data);
+    }
+    return el.dispatchEvent(event)
+  }
+
   const DEFAULTS : IOptions = {
     rulerClassName: "bricklayer-column-sizer",
     columnClassName: "bricklayer-column"
   }
 
   abstract class SimpleElement {
-    element : Element
+    element : HTMLElement
     constructor(className : string) {
       this.element = document.createElement("div")
       this.element.className = className
     }
   }
 
-  class Ruler extends SimpleElement {}
+  class Ruler extends SimpleElement {
+    getWidth() {
+      this.element.setAttribute('style', `
+        display: block;
+        visibility: hidden !important;
+        top: -1000px !important;
+      `)
+      var width = this.element.offsetWidth
+      this.element.removeAttribute('style')
+      return width
+    }
+  }
   class Column extends SimpleElement {}
 
   export class Container {
-    element     : JQuery
     ruler       : Ruler
 
     elements    : any
     columnCount : number
 
-    constructor(selector : string, protected options : IOptions = DEFAULTS) {
-      this.element = jQuery(selector)
+    constructor(public element: HTMLElement, protected options : IOptions = DEFAULTS) {
       this.ruler = new Ruler(options.rulerClassName)
-
-      this.element.data('bricklayer', this)
-
       this.build()
       this.buildResponsive()
     }
 
     append(item) {
-      if (jQuery.isArray(item)) {
+      if (Array.isArray(item)) {
         item.forEach(item => this.append(item))
         return
       }
       var column = this.findMinHeightColumn()
-      this.elements = jQuery(this.elements.get().concat([item]))
+      this.elements = toArray(this.elements).concat([item])
       this.applyPosition('append', column, item)
     }
 
     prepend(item) {
-      if (jQuery.isArray(item)) {
+      if (Array.isArray(item)) {
         item.forEach(item => this.prepend(item))
         return
       }
       var column = this.findMinHeightColumn()
-      this.elements = jQuery([item].concat(this.elements.get()))
+      this.elements = [item].concat(toArray(this.elements))
       this.applyPosition('prepend', column, item)
     }
 
-    onBreakpoint(handler : (eventObject: JQueryEventObject, size : number) => any) {
-      this.element.on('bricklayer.breakpoint', handler)
-      return this
-    }
-
-    onAfterAppend(handler : (eventObject: JQueryEventObject) => any) {
-      this.element.on('bricklayer.afterAppend', handler)
-      return this
-    }
-
-    onBeforeAppend(handler : (eventObject: JQueryEventObject) => any) {
-      this.element.on('bricklayer.beforeAppend', handler)
-      return this
-    }
-
-    onAfterPrepend(handler : (eventObject: JQueryEventObject) => any) {
-      this.element.on('bricklayer.afterPrepend', handler)
-      return this
-    }
-
-    onBeforePrepend(handler : (eventObject: JQueryEventObject) => any) {
-      this.element.on('bricklayer.beforePrepend', handler)
+    on(eventName, handler) {
+      // eventName may be:
+      // - breakpoint
+      // - afterAppend
+      // - beforeAppend
+      // - afterPrepend
+      // - beforePrepend
+      this.element.addEventListener(`bricklayer.${eventName}`, handler)
       return this
     }
 
     private build() {
       this.elements = this.getElementsInOrder()
-      this.element.prepend(this.ruler.element)
+      this.element.insertBefore(this.ruler.element, this.element.firstChild)
     }
 
     private buildResponsive() {
-      jQuery(window).on("resize", e => this.checkColumnCount()).trigger("resize")
-      this.onBreakpoint((e, size) => this.reorderElements(size))
+      window.addEventListener("resize", e => this.checkColumnCount())
+      this.checkColumnCount()
+      this.on("breakpoint", e => this.reorderElements(e.detail.columnCount))
       if (this.columnCount >= 1) {
         this.reorderElements(this.columnCount)
       }
     }
 
     private getColumns() {
-      return this.element.find(`> .${this.options.columnClassName}`)
+      return this.element.querySelectorAll(`:scope > .${this.options.columnClassName}`)
     }
 
 
     private findMinHeightColumn() {
       var allColumns = this.getColumns()
-      let column = allColumns.get().sort((a, b) => {
-        let aHeight = jQuery(a).height()
-        let bHeight = jQuery(b).height()
+      let column = toArray(allColumns).sort((a, b) => {
+        let aHeight = a.offsetHeight
+        let bHeight = b.offsetHeight
         return aHeight > bHeight ? 1 : (aHeight == bHeight ? 0 : -1)
       })
-      return jQuery(column).eq(0)
+      return column[0]
     }
 
     private getElementsInOrder() {
-      return this.element.find("> *")
-        .not(`> .${this.options.columnClassName}`)
-        .not(`> .${this.options.rulerClassName}`)
+      return this.element.querySelectorAll(`:scope > *:not(.${this.options.columnClassName}):not(.${this.options.rulerClassName})`)
     }
 
     private checkColumnCount() {
       var columnCount = this.getColumnCount()
       if (this.columnCount !== columnCount) {
-        this.element.trigger('bricklayer.breakpoint', columnCount)
+        triggerEvent(this.element, "bricklayer.breakpoint", {columnCount})
         this.columnCount = columnCount
       }
     }
 
-    private reorderElements(columnCount : number) {
-      var elements = this.elements.detach()
+    private reorderElements(columnCount : number = 1) {
+      if (columnCount == Infinity || columnCount < 1) {
+        columnCount = 1
+      }
 
-      this.getColumns().remove()
+      var elements = toArray(this.elements).map(item => {
+        let element = item.parentNode.removeChild(item)
+        return element
+      })
+
+      var columns = this.getColumns()
+      for (var i = 0; i < columns.length; i++) {
+        columns[i].parentNode.removeChild(columns[i])
+      }
 
       for (var i = 0; i < columnCount; i++) {
         let {element} = new Column(this.options.columnClassName)
-        this.element.append(element)
+        this.element.appendChild(element)
       }
 
-      elements.each((i, item) => {
+      elements.forEach(item => {
         var column = this.findMinHeightColumn()
-        column.append(item)
+        column.appendChild(item)
       })
     }
 
     private getColumnCount() {
-      var containerWidth = this.element.width()
-      var columnWidth = jQuery(this.ruler.element).width()
+      var containerWidth = this.element.offsetWidth
+      var columnWidth = this.ruler.getWidth()
       return Math.round(containerWidth / columnWidth)
     }
 
     private applyPosition(pos, column, item) {
       let trigger = (timing) => {
         let eventName = timing + pos.charAt(0).toUpperCase() + pos.substr(1)
-        this.element.trigger(`bricklayer.${eventName}`, [item, column])
+        triggerEvent(this.element, `bricklayer.${eventName}`, {item, column})
       }
       trigger('before')
-      column[pos](item)
+      switch (pos) {
+        case 'append':
+          column.appendChild(item)
+          break
+        case 'prepend':
+          column.insertBefore(item, column.firstChild)
+          break
+      }
       trigger('after')
     }
+
   }
 }
 
-jQuery.fn.bricklayer = function (options) {
-  return new Bricklayer.Container(this, options)
+window["Bricklayer"] = Bricklayer.Container
+
+declare var jQuery
+
+if (jQuery !== undefined) {
+  (function ($) {
+    $.fn.bricklayer = function (options) {
+      $(this).forEach(function () {
+        var instance = new Bricklayer.Container(this, options)
+        $(this).data('bricklayer', instance)
+      })
+      return this
+    }
+  })(jQuery)
 }

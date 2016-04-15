@@ -1,6 +1,6 @@
 # Bricklayer
 
-Lightweight cascading grid layout library. Inspired and a lighter alternative to [Masonry](http://masonry.desandro.com/)
+Lightweight & independent cascading grid layout library. Inspired and a lighter alternative to [Masonry](http://masonry.desandro.com/)
 
 [Play with example](http://ademilter.github.io/bricklayer)
 
@@ -9,8 +9,8 @@ Lightweight cascading grid layout library. Inspired and a lighter alternative to
 ## Why Bricklayer?
 
  - **Simpler** than any other cascading grid layout tools.
- - **Lightweight**, no fat. **(1.1KB gzipped)**
- - Integrates with **jQuery** seamlessly.
+ - **Lightweight**, no fat. **(1.5KB gzipped)**
+ - **No frameworks required**, but if you use jQuery it integrates itself as a plugin.
  - **Responsive** support with no glitch.
  - Easy configuration.
  - Static positioning, no inline styles.
@@ -63,10 +63,10 @@ bower install bricklayer # or using bower
 }
 ```
 
-- Make them bricks using `bricklayer` plugin.
+- Make them bricks using `Bricklayer` class.
 
 ```js
-var bricklayer = $(".bricklayer").bricklayer()
+var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
 ```
 
 ## Methods
@@ -74,7 +74,7 @@ var bricklayer = $(".bricklayer").bricklayer()
 
 ```js
 bricklayer.append(
-  $("<div>My awesome content</div>")
+  "<div>My awesome content</div>"
 )
 ```
 
@@ -82,17 +82,23 @@ You can also add multiple bricks at once:
 
 ```js
 bricklayer.prepend([
-  $("<div>My awesome content</div>"),
-  $("<div>My another awesome but very long content</div>")
+  "<div>My awesome content</div>",
+  "<div>My another awesome but very long content</div>"
 ])
 ```
 
-### Accessing Bricklayer Instance via `data` Attribute
+## Using with jQuery
+
+Bricklayer integrates itself into jQuery if it founds any jQuery instance on page.
 
 ```js
-$(".bricklayer").bricklayer().data('bricklayer').append([
+var bricklayer = $("#bricklayer").bricklayer()
+
+bricklayer.data('bricklayer').append([
   // items
 ])
+
+bricklayer.data('b
 ```
 
 ## Events
@@ -102,22 +108,44 @@ create more extensible layouts. You can use these events especially for
 animations. Please see examples.
 
 ```js
-bricklayer.onBeforeAppend(function (e, itemElement, columnElement) {
+bricklayer.on('beforeAppend', function (e) {
+  var itemElement = e.detail.item
+  var columnElement = e.detail.column
   // `itemElement` will be appended to the end of `columnElement`
 })
 
-bricklayer.onBeforePrepend(function (e, itemElement, columnElement) {
+bricklayer.on('beforePrepend', function (e) {
+  var itemElement = e.detail.item
+  var columnElement = e.detail.column
   // `itemElement` will be prepended to the top of `columnElement`
 })
 
-bricklayer.onAfterAppend(function (e, itemElement, columnElement) {
+bricklayer.on('afterAppend', function (e) {
+  var itemElement = e.detail.item
+  var columnElement = e.detail.column
   // `itemElement` is appended to the end of `columnElement`
 })
 
-bricklayer.onAfterPrepend(function (e, itemElement, columnElement) {
+bricklayer.on('afterPrepend', function (e) {
+  var itemElement = e.detail.item
+  var columnElement = e.detail.column
   // `itemElement` is prepended to the top of `columnElement`
 })
+
+bricklayer.on('breakpoint', function (e) {
+  var columnCount = e.detail.columnCount
+  // In every breakpoint, this event will be fired with the count of columns
+})
 ```
+
+## Browser Support
+
+This plugin works seamlessly with these browsers:
+  - Safari 9.0.2
+  - Firefox 43.0.4
+  - Chrome 49
+
+Please add more and open a pull request if you tested successfully on more browsers.
 
 ## License
 
