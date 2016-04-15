@@ -34,6 +34,8 @@ module Bricklayer {
       this.element = jQuery(selector)
       this.ruler = new Ruler(options.rulerClassName)
 
+      this.element.data('bricklayer', this)
+
       this.build()
       this.buildResponsive()
     }

@@ -80,6 +80,14 @@ bricklayer.prepend([
 ])
 ```
 
+### Accessing Bricklayer Instance via `data` Attribute
+
+```js
+$(".bricklayer").bricklayer().data('bricklayer').append([
+  // items
+])
+```
+
 ## Events
 
 You can add listeners to Bricklayer to have full control. They allows you to
