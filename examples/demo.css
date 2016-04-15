@@ -3,11 +3,20 @@
   padding: 0;
 }
 
+body {
+  font-family: sans-serif;
+}
+
 .bricklayer {
   margin: 10px 5px;
 }
 
 .box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: rgba(255, 255, 255, .6);
   margin-bottom: 10px;
   -webkit-animation-duration: .3s;
   animation-duration: .3s;
