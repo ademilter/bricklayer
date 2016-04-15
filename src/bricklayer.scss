@@ -1,9 +1,6 @@
-$container-max-width: 100%;
 $column-gutter: 10px;
 
 .bricklayer {
-  max-width: $container-max-width;
-  margin: $column-gutter auto;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -24,6 +21,7 @@ $column-gutter: 10px;
     @media screen and (min-width: 1200px) {
       width: 25%;
     }
+
   }
 
   &-column {
@@ -31,47 +29,5 @@ $column-gutter: 10px;
     padding-left: $column-gutter / 2;
     padding-right: $column-gutter / 2;
   }
+
 }
-
-
-.box {
-  margin-bottom: $column-gutter;
-  animation-duration: .3s;
-
-  &.is-append {
-    animation-name: animAppend, animFade;
-  }
-
-  &.is-prepend {
-    animation-name: animPrepend, animFade;
-  }
-}
-
-@keyframes animAppend{
-  from {
-    transform: translateY(20px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes animPrepend{
-  from {
-    transform: translateY(-20px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-
-@keyframes animFade{
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
