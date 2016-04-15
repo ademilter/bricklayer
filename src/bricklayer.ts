@@ -137,7 +137,7 @@ module Bricklayer {
       }
 
       var elements = toArray(this.elements).map(item => {
-        let element = item.parentNode.removeChild(item)
+        let element = item.parentNode ? item.parentNode.removeChild(item) : item
         return element
       })
 

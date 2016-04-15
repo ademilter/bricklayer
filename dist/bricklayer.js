@@ -132,7 +132,7 @@ var Bricklayer;
                 columnCount = 1;
             }
             var elements = toArray(this.elements).map(function (item) {
-                var element = item.parentNode.removeChild(item);
+                var element = item.parentNode ? item.parentNode.removeChild(item) : item;
                 return element;
             });
             var columns = this.getColumns();
