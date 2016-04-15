@@ -8,6 +8,7 @@ Lightweight cascading grid layout library. Inspired and a lighter alternative to
  - **Lightweight**, no fat. **(1.1KB gzipped)**
  - Integrates with **jQuery** seamlessly.
  - **Responsive** support with no glitch.
+ - Easy configuration.
 
 ## Installation
 
@@ -81,13 +82,49 @@ bricklayer.prepend([
 
 ## Events
 
-You can add listeners.
+You can add listeners to Bricklayer to have full control. They allows you to
+create more extensible layouts. You can use these events especially for
+animations. Please see examples.
 
 ```js
-bricklayer.on("bricklayer.afterAppend", function () {})
-bricklayer.on("bricklayer.beforeAppend", function () {})
+bricklayer.onBeforeAppend(function (e, itemElement, columnElement) {
+  // `itemElement` will be appended to the end of `columnElement`
+})
+
+bricklayer.onBeforePrepend(function (e, itemElement, columnElement) {
+  // `itemElement` will be prepended to the top of `columnElement`
+})
+
+bricklayer.onAfterAppend(function (e, itemElement, columnElement) {
+  // `itemElement` is appended to the end of `columnElement`
+})
+
+bricklayer.onAfterPrepend(function (e, itemElement, columnElement) {
+  // `itemElement` is prepended to the top of `columnElement`
+})
 ```
 
 ## License
 
-MIT
+Bricklayer - Cascading Grid Layouts
+
+Copyright © 2016 Adem İlter
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
