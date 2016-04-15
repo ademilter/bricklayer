@@ -20,7 +20,6 @@ Lightweight & independent cascading grid layout library. Inspired and a lighter 
 ```html
 <link rel="stylesheet" href="//rawgit.com/ademilter/bricklayer/master/dist/bricklayer.css">
 
-<script src="//code.jquery.com/jquery-2.2.3.min.js"></script>
 <script src="//rawgit.com/ademilter/bricklayer/master/dist/bricklayer.min.js"></script>
 ```
 
@@ -97,8 +96,6 @@ var bricklayer = $("#bricklayer").bricklayer()
 bricklayer.data('bricklayer').append([
   // items
 ])
-
-bricklayer.data('b
 ```
 
 ## Events
