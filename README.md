@@ -2,6 +2,8 @@
 
 Lightweight cascading grid layout library. Inspired and a lighter alternative to [Masonry](http://masonry.desandro.com/)
 
+![Image](https://rawgit.com/ademilter/bricklayer/master/screenshot.gif)
+
 ## Why Bricklayer?
 
  - **Simpler** than any other cascading grid layout tools.
