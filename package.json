@@ -1,6 +1,6 @@
 {
   "name": "bricklayer",
-  "version": "0.2.1",
+  "version": "0.2.11",
   "description": "Lightweight and strong Masonry alternative",
   "main": "dist/bricklayer.js",
   "scripts": {
@@ -20,9 +20,6 @@
     "url": "https://github.com/ademilter/bricklayer/issues"
   },
   "homepage": "https://github.com/ademilter/bricklayer#readme",
-  "dependencies": {
-    "jquery": "^2.2.3"
-  },
   "devDependencies": {
     "browser-sync": "^2.11.2",
     "browserify": "^13.0.0",

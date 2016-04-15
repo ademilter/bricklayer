@@ -22,8 +22,5 @@
     "examples",
     "screenshot.gif"
   ],
-  "version": "0.2.1",
-  "dependencies": {
-    "jquery": "^2.2.3"
-  }
+  "version": "0.2.11"
 }
