@@ -13,6 +13,7 @@ Lightweight cascading grid layout library. Inspired and a lighter alternative to
  - Integrates with **jQuery** seamlessly.
  - **Responsive** support with no glitch.
  - Easy configuration.
+ - Static positioning, no inline styles.
 
 ## Installation
 
