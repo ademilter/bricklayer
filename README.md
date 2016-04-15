@@ -61,6 +61,7 @@ bower install bricklayer # or using bower
 var bricklayer = $(".bricklayer").bricklayer()
 ```
 
+## Methods
 - Add bricks dynamically
 
 ```js
@@ -72,13 +73,13 @@ bricklayer.append(
 You can also add multiple bricks at once:
 
 ```js
-bricklayer.append([
+bricklayer.prepend([
   $("<div>My awesome content</div>"),
   $("<div>My another awesome but very long content</div>")
 ])
 ```
 
-## Callbacks
+## Events
 
 You can add listeners.
 
