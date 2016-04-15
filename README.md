@@ -1,6 +1,6 @@
 # Bricklayer
 
-Lightweight & independent cascading grid layout library. Inspired and a lighter alternative to [Masonry](http://masonry.desandro.com/)
+Lightweight & independent cascading grid layout library. Inspired by and a lighter alternative to [Masonry](http://masonry.desandro.com/).
 
 [Play with example](http://ademilter.github.io/bricklayer)
 
@@ -11,7 +11,7 @@ Lightweight & independent cascading grid layout library. Inspired and a lighter 
  - **Simpler** than any other cascading grid layout tools.
  - **Lightweight**, no fat. **(1.5KB gzipped)**
  - **No frameworks required**, but if you use jQuery it integrates itself as a plugin.
- - **Responsive** support with no glitch.
+ - **Responsive** support with no glitches.
  - Easy configuration.
  - Static positioning, no inline styles.
 
@@ -31,7 +31,7 @@ bower install bricklayer # or using bower
 
 ## Usage
 
-- Create a simple list.
+- Create a simple list:
 
 ```html
 <div class="bricklayer">
@@ -62,14 +62,14 @@ bower install bricklayer # or using bower
 }
 ```
 
-- Make them bricks using `Bricklayer` class.
+- Make them bricks using `Bricklayer` class:
 
 ```js
 var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
 ```
 
 ## Methods
-- Add bricks dynamically
+- Add bricks dynamically:
 
 ```js
 bricklayer.append(
@@ -88,7 +88,7 @@ bricklayer.prepend([
 
 ## Using with jQuery
 
-Bricklayer integrates itself into jQuery if it founds any jQuery instance on page.
+Bricklayer integrates itself into jQuery if it finds any jQuery instance on the page.
 
 ```js
 var bricklayer = $("#bricklayer").bricklayer()
@@ -100,7 +100,7 @@ bricklayer.data('bricklayer').append([
 
 ## Events
 
-You can add listeners to Bricklayer to have full control. They allows you to
+You can add listeners to Bricklayer for full control. These allow you to
 create more extensible layouts. You can use these events especially for
 animations. Please see examples.
 
@@ -142,7 +142,7 @@ This plugin works seamlessly with these browsers:
   - Firefox 43.0.4
   - Chrome 49
 
-Please add more and open a pull request if you tested successfully on more browsers.
+Please add more and open a pull request if you tested successfully on other browsers.
 
 ## License
 
