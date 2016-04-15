@@ -20,6 +20,7 @@ body {
   margin-bottom: 10px;
   -webkit-animation-duration: .3s;
   animation-duration: .3s;
+  min-height: 150px;
 }
 
 .box.is-append {
