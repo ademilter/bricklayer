@@ -10,12 +10,12 @@ Lightweight & independent cascading grid layout library. Inspired by and a light
 
 ## Why Bricklayer?
 
- - **Simpler** than any other cascading grid layout tools.
- - **Lightweight**, no fat. **(1.5KB gzipped)**
- - **No frameworks required**, but if you use jQuery it integrates itself as a plugin.
- - **Responsive** support with no glitches.
- - Easy configuration.
- - Static positioning, no inline styles.
+ - :gem: **Simpler** than any other cascading grid layout tools.
+ - :snowflake: **Lightweight**, no fat. **(1.5KB gzipped)**
+ - :construction_worker: **No frameworks required**, but if you use jQuery it integrates itself as a plugin.
+ - :droplet: **Responsive** support with no glitches.
+ - :zap: Easy configuration.
+ - :skull: Static positioning, no inline styles.
 
 ## Installation
 
