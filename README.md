@@ -19,7 +19,6 @@ Lightweight & independent cascading grid layout library. Inspired by and a light
 
 ```html
 <link rel="stylesheet" href="//rawgit.com/ademilter/bricklayer/master/dist/bricklayer.css">
-
 <script src="//rawgit.com/ademilter/bricklayer/master/dist/bricklayer.min.js"></script>
 ```
 
@@ -73,7 +72,7 @@ var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
 
 ```js
 bricklayer.append(
-  "<div>My awesome content</div>"
+  myAwesomeElement
 )
 ```
 
@@ -81,8 +80,8 @@ You can also add multiple bricks at once:
 
 ```js
 bricklayer.prepend([
-  "<div>My awesome content</div>",
-  "<div>My another awesome but very long content</div>"
+  myAwesomeElement,
+  myAwesomeButVeryLongElement
 ])
 ```
 
