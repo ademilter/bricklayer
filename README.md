@@ -12,7 +12,7 @@ Lightweight & independent cascading grid layout library. Inspired by and a light
 
  - :gem: **Simpler** than any other cascading grid layout tools.
  - :snowflake: **Lightweight**, no fat. **(1.5KB gzipped)**
- - :construction_worker: **No frameworks required**, but if you use jQuery it integrates itself as a plugin.
+ - :construction_worker: **No frameworks required**.
  - :droplet: **Responsive** support with no glitches.
  - :zap: **Easy** configuration.
  - :skull: **No inline styles**, static positioning.
@@ -87,18 +87,6 @@ bricklayer.prepend([
 ])
 ```
 
-## Using with jQuery
-
-Bricklayer integrates itself into jQuery if it finds any jQuery instance on the page.
-
-```js
-var bricklayer = $("#bricklayer").bricklayer()
-
-bricklayer.data('bricklayer').append([
-  // items
-])
-```
-
 ## Events
 
 You can add listeners to Bricklayer for full control. These allow you to
@@ -134,6 +122,28 @@ bricklayer.on('breakpoint', function (e) {
   var columnCount = e.detail.columnCount
   // In every breakpoint, this event will be fired with the count of columns
 })
+```
+
+## Using with jQuery
+
+You can make simple jQuery plugin based on Bricklayer.
+
+Add this fragment into your codebase to have bricklayer plugin.
+
+```js
+$.fn.bricklayer = function (options) {
+ $(this).each(function () {
+   $(this).data('bricklayer', new Bricklayer(this, options))
+ })
+}
+```
+
+```js
+var bricklayer = $(".bricklayer").bricklayer()
+
+bricklayer.eq(0).data('bricklayer').append([
+  // items
+])
 ```
 
 ## Browser Support
