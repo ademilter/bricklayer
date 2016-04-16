@@ -187,16 +187,14 @@ declare var define
 declare var module
 
 (function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(function () {
-            return (root.Bricklayer = factory())
-        })
-    } else if (typeof module === 'object' && module.exports) {
-        module.exports = factory()
-    } else {
-        root.Bricklayer = factory()
-    }
-}(this, function () {
-    return Bricklayer.Container
+  if (typeof define === 'function' && define.amd) {
+    define(() => factory())
+  } else if (typeof window !== "undefined" && root === window) {
+    root.Bricklayer = factory()
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory()
+  }
+}(typeof window !== "undefined"? window : this, function () {
+  return Bricklayer.Container
 }))
 

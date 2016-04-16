@@ -175,16 +175,14 @@ var Bricklayer;
 })(Bricklayer || (Bricklayer = {}));
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(function () {
-            return (root.Bricklayer = factory());
-        });
+        define(function () { return factory(); });
+    }
+    else if (typeof window !== "undefined" && root === window) {
+        root.Bricklayer = factory();
     }
     else if (typeof module === 'object' && module.exports) {
         module.exports = factory();
     }
-    else {
-        root.Bricklayer = factory();
-    }
-}(this, function () {
+}(typeof window !== "undefined" ? window : this, function () {
     return Bricklayer.Container;
 }));
