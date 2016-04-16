@@ -187,7 +187,7 @@ window["Bricklayer"] = Bricklayer.Container
 
 declare var jQuery
 
-if (jQuery !== undefined) {
+if (window['jQuery'] !== undefined) {
   (function ($) {
     $.fn.bricklayer = function (options) {
       $(this).forEach(function () {
@@ -196,5 +196,5 @@ if (jQuery !== undefined) {
       })
       return this
     }
-  })(jQuery)
+  })(window['jQuery'])
 }

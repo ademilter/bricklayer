@@ -175,7 +175,7 @@ var Bricklayer;
     Bricklayer.Container = Container;
 })(Bricklayer || (Bricklayer = {}));
 window["Bricklayer"] = Bricklayer.Container;
-if (jQuery !== undefined) {
+if (window['jQuery'] !== undefined) {
     (function ($) {
         $.fn.bricklayer = function (options) {
             $(this).forEach(function () {
@@ -184,7 +184,7 @@ if (jQuery !== undefined) {
             });
             return this;
         };
-    })(jQuery);
+    })(window['jQuery']);
 }
 
 },{}]},{},[1]);
