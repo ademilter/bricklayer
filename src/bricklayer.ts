@@ -183,18 +183,20 @@ module Bricklayer {
   }
 }
 
-window["Bricklayer"] = Bricklayer.Container
+declare var define
+declare var module
 
-declare var jQuery
-
-if (window['jQuery'] !== undefined) {
-  (function ($) {
-    $.fn.bricklayer = function (options) {
-      $(this).forEach(function () {
-        var instance = new Bricklayer.Container(this, options)
-        $(this).data('bricklayer', instance)
-      })
-      return this
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(function () {
+            return (root.Bricklayer = factory())
+        })
+    } else if (typeof module === 'object' && module.exports) {
+        module.exports = factory()
+    } else {
+        root.Bricklayer = factory()
     }
-  })(window['jQuery'])
-}
+}(this, function () {
+    return Bricklayer.Container
+}))
+

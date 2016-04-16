@@ -7,7 +7,8 @@ var gulp = require('gulp'),
   browserify = require('browserify'),
   tsify = require('tsify'),
   uglify = require('gulp-uglify'),
-  rename = require('gulp-rename')
+  rename = require('gulp-rename'),
+  typescript = require('gulp-typescript')
 
 var browserReload = browserSync.reload;
 
@@ -23,6 +24,14 @@ gulp.task("css", function () {
 
 
 gulp.task("js", function () {
+
+  gulp.src('src/bricklayer.ts')
+    .pipe(typescript({
+      module: 'commonjs',
+      out: 'bricklayer-node.js'
+    }))
+    .pipe(gulp.dest('./dist'));
+
   browserify()
     .add('./src/bricklayer.ts')
     .plugin(tsify, {
