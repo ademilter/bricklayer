@@ -14,8 +14,8 @@ Lightweight & independent cascading grid layout library. Inspired by and a light
  - :snowflake: **Lightweight**, no fat. **(1.5KB gzipped)**
  - :construction_worker: **No frameworks required**, but if you use jQuery it integrates itself as a plugin.
  - :droplet: **Responsive** support with no glitches.
- - :zap: Easy configuration.
- - :skull: Static positioning, no inline styles.
+ - :zap: **Easy** configuration.
+ - :skull: **No inline styles**, static positioning.
 
 ## Installation
 
