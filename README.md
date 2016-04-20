@@ -1,4 +1,4 @@
-![Bricklayer.js logo](https://raw.githubusercontent.com/ademilter/bricklayer/master/logo.png)
+<img src="https://raw.githubusercontent.com/ademilter/bricklayer/master/logo.png" width="416">
 ---
 
 
