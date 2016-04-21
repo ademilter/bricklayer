@@ -20,7 +20,8 @@
     "test",
     "tests",
     "examples",
+    "logo.png",
     "screenshot.gif"
   ],
-  "version": "0.2.21"
+  "version": "0.2.22"
 }

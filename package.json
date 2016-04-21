@@ -1,6 +1,6 @@
 {
   "name": "bricklayer",
-  "version": "0.2.21",
+  "version": "0.2.22",
   "description": "Lightweight and strong Masonry alternative",
   "main": "dist/bricklayer-node.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "masonry",
     "bricklayer"
   ],
-  "author": "Adem İlter <ademilter@gmail.com>",
+  "author": "Adem İlter <ademilter@gmail.com>, Fatih Kadir Akın <fatihkadirakin@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ademilter/bricklayer/issues"
