@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Bricklayer</title>
     <link rel="stylesheet" href="https://rawgit.com/ademilter/bricklayer/master/dist/bricklayer.css">
+    <link rel="stylesheet" href="./demo.css">
     <style>
       .bricklayer-column-sizer {
         width: 15%;
@@ -25,9 +26,13 @@
         }
       }
       .item {
-        background-color: red;
+        background-color: #D65E2F;
         margin-bottom: 10px;
         min-height: 20px;
+        opacity: 0;
+      }
+      .item.is-append {
+        transition-duration: 200ms;
       }
     </style>
 </head>
@@ -37,9 +42,19 @@
   <!-- item here -->
 </section>
 
+<div class="buttons">
+  <button onclick="location.href='index.html'">GO MAIN PAGE</button>
+</div>
+
+<img class="logo" src="https://rawgit.com/ademilter/bricklayer/master/logo.png">
+
 <script src="https://rawgit.com/ademilter/bricklayer/master/dist/bricklayer.min.js"></script>
 <script>
   var bl = new Bricklayer(document.querySelector(".bricklayer"))
+  bl.on("afterAppend", function (e) {
+    var el = e.detail.item;
+    el.classList.add('is-append');
+  });
   function newBox() {
     var el = document.createElement('div')
     el.className = "item"
