@@ -33,12 +33,12 @@ body {
   min-height: 150px;
 }
 
-.box.is-append {
+.is-append {
   -webkit-animation-name: animAppend, animFade;
   animation-name: animAppend, animFade;
 }
 
-.box.is-prepend {
+.is-prepend {
   -webkit-animation-name: animPrepend, animFade;
   animation-name: animPrepend, animFade;
 }
