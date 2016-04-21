@@ -63,3 +63,11 @@ Array.prototype.slice.call(buttons).forEach(function (button) {
     }
   });
 });
+
+////
+
+for (var i = 0; i < 10; i++) {
+  var box = newBox();
+  box.innerHTML = (bricklayer.elements.length + 1);
+  bricklayer.append(box);
+}
