@@ -13,6 +13,10 @@ Lightweight & independent cascading grid layout library. Inspired by and a light
 
 [![Image](https://rawgit.com/ademilter/bricklayer/master/screenshot.gif)](http://ademilter.github.io/bricklayer)
 
+### More Examples
+
+ - [Gradient Wall](http://bricklayer.js.org/gradient-wall.html)
+
 ## Why Bricklayer?
 
  - :gem: **Simpler** than any other cascading grid layout tools.
