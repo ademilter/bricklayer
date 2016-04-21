@@ -30,8 +30,8 @@ Lightweight & independent cascading grid layout library. Inspired by and a light
 ## Installation
 
 ```html
-<link rel="stylesheet" href="//rawgit.com/ademilter/bricklayer/master/dist/bricklayer.css">
-<script src="//rawgit.com/ademilter/bricklayer/master/dist/bricklayer.min.js"></script>
+<link rel="stylesheet" href="//npmcdn.com/bricklayer/dist/bricklayer.css">
+<script src="//npmcdn.com/bricklayer/dist/bricklayer.min.js"></script>
 ```
 
 If you are using modular JavaScript, you can use **NPM** or **Bower**
