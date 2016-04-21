@@ -183,6 +183,12 @@ We need contributions for:
  - Building fancy web pages
  - Typo fixes
 
+## Credits
+
+ - [Adem İlter](https://twitter.com/ademilter) - creator, owner of the whole idea, maintainer of CSS artwork.
+ - [Fatih Kadir Akın](https://twitter.com/fkadev) - creator, maintainer of JavaScript parts.
+ - [Yasir Buğra Eryılmaz](https://twitter.com/yasirbugra) - maintainer of logo
+
 ## License
 
 Bricklayer - Cascading Grid Layouts
