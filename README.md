@@ -11,7 +11,7 @@ Lightweight & independent cascading grid layout library. Inspired by and a light
 
 [**Play with example** :point_right:](http://ademilter.github.io/bricklayer)
 
-[![Image](https://rawgit.com/ademilter/bricklayer/master/assets/screenshot-wall.gif)](http://ademilter.github.io/bricklayer)
+[![Image](https://rawgit.com/ademilter/bricklayer/master/assets/screenshot-wall.gif)](http://ademilter.github.io/bricklayer/gradient-wall.html)
 
 ### All Examples
 
