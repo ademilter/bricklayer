@@ -8,6 +8,15 @@ body {
   padding-bottom: 30px;
 }
 
+.logo {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  height: 63px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 .bricklayer {
   margin: 10px 5px;
 }
