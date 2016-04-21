@@ -13,10 +13,15 @@ Lightweight & independent cascading grid layout library. Inspired by and a light
 
 [![Image](https://rawgit.com/ademilter/bricklayer/master/assets/screenshot-wall.gif)](http://ademilter.github.io/bricklayer/gradient-wall.html)
 
-### All Examples
+## All Examples
 
  - [Colourful Boxes](http://bricklayer.js.org/index.html)
  - [Gradient Wall](http://bricklayer.js.org/gradient-wall.html)
+
+## Bricklayer Playgrounds
+
+- Play with Bricklayer on [CodePen.io](http://codepen.io/f/pen/QNBwrO)
+- Play with Bricklayer on [JSFiddle](https://jsfiddle.net/fka/totn2yL0/)
 
 ## Why Bricklayer?
 
