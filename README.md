@@ -151,6 +151,10 @@ bricklayer.eq(0).data('bricklayer').append([
 ])
 ```
 
+## Are you using Bricklayer.js for your next project?
+
+[Let us know](https://github.com/ademilter/bricklayer/issues/new?title=We%20use%20bricklayer,%20too!&body=Please%20add%20this%20to%20the%20list!%0A%0AWebsite:%20%3Curl%3E%0ATitle:%20%3Ca%20short%20title%3E%0A%0A%3Cany%20description%3E) if you use this awesome library in your project and we'll add here!
+
 ## Browser Support
 
 This plugin works seamlessly with these browsers:
@@ -159,6 +163,15 @@ This plugin works seamlessly with these browsers:
   - Chrome 49
 
 Please add more and open a pull request if you tested successfully on other browsers.
+
+## Contribution
+
+Check out our awesome [contributors](https://github.com/ademilter/bricklayer/graphs/contributors)! Maybe you want to buy some coffee for them ☕️
+
+We need contributions for:
+ - Improving documentation
+ - Building fancy web pages
+ - Typo fixes
 
 ## License
 
