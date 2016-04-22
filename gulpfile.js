@@ -8,6 +8,7 @@ var gulp = require('gulp'),
   tsify = require('tsify'),
   uglify = require('gulp-uglify'),
   rename = require('gulp-rename'),
+  cssmin = require('gulp-cssmin'),
   typescript = require('gulp-typescript')
 
 var browserReload = browserSync.reload;
@@ -22,6 +23,12 @@ gulp.task("css", function () {
     .pipe(browserSync.stream());
 });
 
+gulp.task("cssmin", function () {
+  gulp.src('dist/bricklayer.css')
+		.pipe(cssmin())
+		.pipe(rename({suffix: '.min'}))
+		.pipe(gulp.dest('dist'));
+})
 
 gulp.task("js", function () {
 
@@ -31,7 +38,9 @@ gulp.task("js", function () {
       out: 'bricklayer-node.js'
     }))
     .pipe(gulp.dest('./dist'));
+})
 
+gulp.task("browserify", function () {
   browserify()
     .add('./src/bricklayer.ts')
     .plugin(tsify, {
@@ -43,22 +52,23 @@ gulp.task("js", function () {
     })
     .pipe(source('./dist/bricklayer.js'))
     .pipe(gulp.dest("./"));
+})
 
+gulp.task("jsmin", function () {
   gulp.src("./dist/bricklayer.js")
     .pipe(uglify())
     .pipe(rename({suffix: ".min"}))
     .pipe(gulp.dest("./dist"))
-});
+})
 
 gulp.task("watch", ["css", "js"], function () {
   browserSync.init({
     notify: false,
     // proxy: "localhost/bricklayer"
-  });
-  gulp.watch('./src/*.scss', ["css"]);
-  gulp.watch('./src/*.ts', ["js"]);
-});
+  })
+  gulp.watch('./src/*.scss', ["css"])
+  gulp.watch('./src/*.ts', ["js"])
+})
 
-
-gulp.task("default", ["watch"]);
-gulp.task("export", ["css", "js"]);
+gulp.task("default", ["watch"])
+gulp.task("export", ["css", "cssmin", "js", "browserify", "jsmin"])
