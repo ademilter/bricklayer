@@ -21,7 +21,7 @@
     "tests",
     "examples",
     "logo.png",
-    "screenshot.gif"
+    "assets"
   ],
-  "version": "0.2.22"
+  "version": "0.2.4"
 }
