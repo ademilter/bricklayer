@@ -185,9 +185,9 @@ We need contributions for:
 
 ## Credits
 
- - [Adem İlter](https://twitter.com/ademilter) - creator, owner of the whole idea, maintainer of CSS artwork.
+ - [Adem İlter](https://twitter.com/ademilter) - creator, owner of the whole idea, maintainer of artwork.
  - [Fatih Kadir Akın](https://twitter.com/fkadev) - creator, maintainer of JavaScript parts.
- - [Yasir Buğra Eryılmaz](https://twitter.com/yasirbugra) - maintainer of logo
+ - [Yasir Buğra Eryılmaz](https://twitter.com/yasirbugra) - retouch of logo
 
 ## License
 
