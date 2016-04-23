@@ -54,7 +54,7 @@ Since Bricklayer is purely vanilla, you can use it with your frameworks. Here so
 
 | Framework | Bricklayer Extension | Playground |
 | --------- | -------------------- | ---------- |
-| **jQuery** | Built-in | [http://codepen.io/f/pen/zqLJNa](http://codepen.io/f/pen/zqLJNa) |
+| **jQuery** | [Built-in](https://github.com/ademilter/bricklayer/blob/master/README.md#built-in-jquery-support) | [http://codepen.io/f/pen/zqLJNa](http://codepen.io/f/pen/zqLJNa) |
 | **Angular.js** | [JohnnyTheTank/angular-bricklayer](https://github.com/JohnnyTheTank/angular-bricklayer) | [http://plnkr.co/edit/mo3G36](http://plnkr.co/edit/mo3G36?p=info) |
 
 You can also [add your extensions](https://github.com/ademilter/bricklayer/issues/new?title=Bricklayer%20Extension) to the list!
