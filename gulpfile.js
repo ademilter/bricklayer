@@ -31,13 +31,24 @@ gulp.task("cssmin", function () {
 })
 
 gulp.task("js", function () {
-
   gulp.src('src/bricklayer.ts')
     .pipe(typescript({
       module: 'commonjs',
       out: 'bricklayer-node.js'
     }))
     .pipe(gulp.dest('./dist'));
+})
+
+gulp.task("jquery", function () {
+  gulp.src('src/jquery.bricklayer.js')
+    .pipe(gulp.dest("./dist"))
+})
+
+gulp.task("jquerymin", function () {
+  gulp.src('src/jquery.bricklayer.js')
+    .pipe(uglify())
+    .pipe(rename({suffix: ".min"}))
+    .pipe(gulp.dest("./dist"))
 })
 
 gulp.task("browserify", function () {
@@ -71,4 +82,4 @@ gulp.task("watch", ["css", "js"], function () {
 })
 
 gulp.task("default", ["watch"])
-gulp.task("export", ["css", "cssmin", "js", "browserify", "jsmin"])
+gulp.task("export", ["css", "cssmin", "js", "browserify", "jsmin", "jquery", "jquerymin"])
