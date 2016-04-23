@@ -54,6 +54,7 @@ Since Bricklayer is purely vanilla, you can use it with your frameworks. Here so
 
 | Framework | Bricklayer Extension | Playground |
 | --------- | -------------------- | ---------- |
+| **jQuery** | Built-in | [http://codepen.io/f/pen/zqLJNa](http://codepen.io/f/pen/zqLJNa) |
 | **Angular.js** | [JohnnyTheTank/angular-bricklayer](https://github.com/JohnnyTheTank/angular-bricklayer) | [http://plnkr.co/edit/mo3G36](http://plnkr.co/edit/mo3G36?p=info) |
 
 You can also [add your extensions](https://github.com/ademilter/bricklayer/issues/new?title=Bricklayer%20Extension) to the list!
@@ -152,27 +153,32 @@ bricklayer.on('breakpoint', function (e) {
 })
 ```
 
-## Using with jQuery
+## Built-in jQuery Support
 
-You can make simple jQuery plugin based on Bricklayer.
+```html
+<link rel="stylesheet" href="//npmcdn.com/bricklayer/dist/bricklayer.min.css">
+<script src="//npmcdn.com/bricklayer/dist/bricklayer.min.js"></script>
 
-Add this fragment into your codebase to have bricklayer plugin.
-
-```js
-$.fn.bricklayer = function (options) {
- $(this).each(function () {
-   $(this).data('bricklayer', new Bricklayer(this, options))
- })
-}
+<!-- You should also add jquery.bricklayer.js -->
+<script src="//npmcdn.com/bricklayer/dist/jquery.bricklayer.min.js"></script>
 ```
 
+Then you should enable plugin for your bricklayer elements.
 ```js
-var bricklayer = $(".bricklayer").bricklayer()
+// Initialize
+$(".bricklayer").bricklayer()
 
-bricklayer.eq(0).data('bricklayer').append([
-  // items
-])
+// Append Elements
+$(".bricklayer").appendElements(elements)
+
+// Prepend Elements
+$(".bricklayer").prependElements(elements)
+
+// Listen Events (bricklayer.breakpoint, bricklayer.afterAppend, bricklayer.afterPrepend, bricklayer.beforeAppend, bricklayer.beforePrepend)
+$(".bricklayer").on("bricklayer.breakpoint", handlerFunction)
 ```
+
+For more information you can [play on playground](http://codepen.io/f/pen/zqLJNa).
 
 ## Are you using Bricklayer.js for your next project?
 
