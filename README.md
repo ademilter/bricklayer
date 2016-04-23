@@ -48,16 +48,17 @@ npm install bricklayer # using npm
 bower install bricklayer # or using bower
 ```
 
-## Bricklayer Extensions
+## Bricklayer with Frameworks
 
-Since Bricklayer is purely vanilla, you can use it with your frameworks. Here some framework extensions built by the awesome community:
+Since Bricklayer is purely vanilla, you can use it with your frameworks. Here some framework examples:
 
-| Framework | Bricklayer Extension | Playground |
+| Framework | How to use? | Playground |
 | --------- | -------------------- | ---------- |
-| **jQuery** | [Built-in](https://github.com/ademilter/bricklayer/blob/master/README.md#built-in-jquery-support) | [http://codepen.io/f/pen/zqLJNa](http://codepen.io/f/pen/zqLJNa) |
-| **Angular.js** | [JohnnyTheTank/angular-bricklayer](https://github.com/JohnnyTheTank/angular-bricklayer) | [http://plnkr.co/edit/mo3G36](http://plnkr.co/edit/mo3G36?p=info) |
+| **jQuery** | [Built-in Support](https://github.com/ademilter/bricklayer/blob/master/README.md#built-in-jquery-support) (Add `jquery.bricklayer.js`) | [http://codepen.io/f/pen/zqLJNa](http://codepen.io/f/pen/zqLJNa) |
+| **React** | Built-in Support (Check out Playground) | [http://www.webpackbin.com/V1L4KdVeW](http://www.webpackbin.com/V1L4KdVeW) |
+| **Angular.js** | You can use [JohnnyTheTank/angular-bricklayer](https://github.com/JohnnyTheTank/angular-bricklayer) | [http://plnkr.co/edit/mo3G36](http://plnkr.co/edit/mo3G36?p=info) |
 
-You can also [add your extensions](https://github.com/ademilter/bricklayer/issues/new?title=Bricklayer%20Extension) to the list!
+You can also [add your examples](https://github.com/ademilter/bricklayer/issues/new?title=Bricklayer%20Framework%20Example) to the list!
 
 ## Usage
 
