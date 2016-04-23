@@ -52,9 +52,9 @@ bower install bricklayer # or using bower
 
 Since Bricklayer is purely vanilla, you can use it with your frameworks. Here some framework extensions built by the awesome community:
 
-| Framework | Bricklayer Extension |
-| --------- | -------------------- |
-| **Angular.js** | [JohnnyTheTank/angular-bricklayer](https://github.com/JohnnyTheTank/angular-bricklayer) |
+| Framework | Bricklayer Extension | Playground |
+| --------- | -------------------- | ---------- |
+| **Angular.js** | [JohnnyTheTank/angular-bricklayer](https://github.com/JohnnyTheTank/angular-bricklayer) | [http://plnkr.co/edit/mo3G36](http://plnkr.co/edit/mo3G36?p=info) |
 
 You can also [add your extensions](https://github.com/ademilter/bricklayer/issues/new?title=Bricklayer%20Extension) to the list!
 
