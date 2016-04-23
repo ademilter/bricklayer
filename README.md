@@ -13,16 +13,6 @@ Lightweight & independent cascading grid layout library. Inspired by and a light
 
 [![Image](https://rawgit.com/ademilter/bricklayer/master/assets/screenshot.gif)](http://ademilter.github.io/bricklayer)
 
-## All Examples
-
- - [Colourful Boxes](http://bricklayer.js.org/index.html)
- - [Gradient Wall](http://bricklayer.js.org/gradient-wall.html)
-
-## Bricklayer Playgrounds
-
-- Play with Bricklayer on [CodePen.io](http://codepen.io/f/pen/QNBwrO)
-- Play with Bricklayer on [JSFiddle](https://jsfiddle.net/fka/totn2yL0/)
-
 ## Why Bricklayer?
 
  - :gem: **Simpler** than any other cascading grid layout tools.
@@ -31,6 +21,20 @@ Lightweight & independent cascading grid layout library. Inspired by and a light
  - :droplet: **Responsive** support with no glitches.
  - :zap: **Easy** configuration.
  - :skull: **No inline styles**, static positioning.
+ - :package: Integrates with **jQuery**, **Angular.js** and **React.js** easily.
+
+## Examples
+
+ - [Colourful Boxes](http://bricklayer.js.org/index.html)
+ - [Gradient Wall](http://bricklayer.js.org/gradient-wall.html)
+
+## Playgrounds
+
+- Play with Bricklayer on [CodePen.io](http://codepen.io/f/pen/QNBwrO)
+- Play with Bricklayer on [JSFiddle](https://jsfiddle.net/fka/totn2yL0/)
+- Play with Bricklayer on [Webpackbin](http://www.webpackbin.com/V1L4KdVeW)
+
+---
 
 ## Installation
 
@@ -59,6 +63,8 @@ Since Bricklayer is purely vanilla, you can use it with your frameworks. Here so
 | **Angular.js** | You can use [JohnnyTheTank/angular-bricklayer](https://github.com/JohnnyTheTank/angular-bricklayer) | [http://plnkr.co/edit/mo3G36](http://plnkr.co/edit/mo3G36?p=info) |
 
 You can also [add your examples](https://github.com/ademilter/bricklayer/issues/new?title=Bricklayer%20Framework%20Example) to the list!
+
+---
 
 ## Usage
 
@@ -99,7 +105,7 @@ You can also [add your examples](https://github.com/ademilter/bricklayer/issues/
 var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
 ```
 
-## Methods
+### Methods
 - Add bricks dynamically:
 
 ```js
@@ -117,7 +123,7 @@ bricklayer.prepend([
 ])
 ```
 
-## Events
+### Events
 
 You can add listeners to Bricklayer for full control. These allow you to
 create more extensible layouts. You can use these events especially for
@@ -154,7 +160,7 @@ bricklayer.on('breakpoint', function (e) {
 })
 ```
 
-## Built-in jQuery Support
+### Built-in jQuery Support
 
 ```html
 <link rel="stylesheet" href="//npmcdn.com/bricklayer/dist/bricklayer.min.css">
