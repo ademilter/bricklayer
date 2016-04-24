@@ -7,7 +7,7 @@
 [![Bower version](https://badge.fury.io/bo/bricklayer.svg)](https://badge.fury.io/bo/bricklayer)
 
 
-Lightweight & independent cascading grid layout library. Inspired by and a lighter alternative to [Masonry](http://masonry.desandro.com/).
+Lightweight and independent Pinterest-like cascading grid layout library.
 
 [**Play with example** :point_right:](http://ademilter.github.io/bricklayer)
 
