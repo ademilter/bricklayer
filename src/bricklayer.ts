@@ -31,6 +31,10 @@ module Bricklayer {
       this.element = document.createElement("div")
       this.element.className = className
     }
+
+    destroy() {
+      this.element.parentNode.removeChild(this.element)
+    }
   }
 
   class Ruler extends SimpleElement {
@@ -54,7 +58,6 @@ module Bricklayer {
     columnCount : number
 
     constructor(public element: HTMLElement, protected options : IOptions = DEFAULTS) {
-      this.ruler = new Ruler(options.rulerClassName)
       this.build()
       this.buildResponsive()
     }
@@ -90,7 +93,18 @@ module Bricklayer {
       return this
     }
 
+    redraw(columnCount = this.columnCount) {
+      this.reorderElements(columnCount)
+    }
+
+    destroy() {
+      this.ruler.destroy()
+      toArray(this.elements).forEach(el => this.element.appendChild(el))
+      toArray(this.getColumns()).forEach(el => el.parentNode.removeChild(el))
+    }
+
     private build() {
+      this.ruler = new Ruler(this.options.rulerClassName)
       this.elements = this.getElementsInOrder()
       this.element.insertBefore(this.ruler.element, this.element.firstChild)
     }
@@ -108,15 +122,11 @@ module Bricklayer {
       return this.element.querySelectorAll(`:scope > .${this.options.columnClassName}`)
     }
 
-
     private findMinHeightColumn() {
-      var allColumns = this.getColumns()
-      let column = toArray(allColumns).sort((a, b) => {
-        let aHeight = a.offsetHeight
-        let bHeight = b.offsetHeight
-        return aHeight > bHeight ? 1 : (aHeight == bHeight ? 0 : -1)
-      })
-      return column[0]
+      var allColumns = toArray(this.getColumns())
+      let heights = allColumns.map(column => column.offsetHeight)
+      let minHeight = Math.min.apply(null, heights)
+      return allColumns[heights.indexOf(minHeight)]
     }
 
     private getElementsInOrder() {

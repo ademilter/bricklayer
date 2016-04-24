@@ -32,15 +32,14 @@ Lightweight & independent cascading grid layout library. Inspired by and a light
 
 - Play with Bricklayer on [CodePen.io](http://codepen.io/f/pen/QNBwrO)
 - Play with Bricklayer on [JSFiddle](https://jsfiddle.net/fka/totn2yL0/)
-- Play with Bricklayer on [Webpackbin](http://www.webpackbin.com/V1L4KdVeW)
 
 ---
 
 ## Installation
 
 ```html
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.2.4/bricklayer.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.2.4/bricklayer.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.0/bricklayer.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.0/bricklayer.min.js"></script>
 ```
 
 If you are using modular JavaScript, you can use **NPM** or **Bower**
@@ -68,7 +67,7 @@ You can also [add your examples](https://github.com/ademilter/bricklayer/issues/
 
 ## Usage
 
-- Create a simple list:
+##### Create a simple list:
 
 ```html
 <div class="bricklayer">
@@ -81,7 +80,7 @@ You can also [add your examples](https://github.com/ademilter/bricklayer/issues/
 </div>
 ```
 
-- Define **bricklayer column size**:
+##### Define **bricklayer column size**:
 
 ```css
 @media screen and (min-width: 1200px) {
@@ -99,7 +98,7 @@ You can also [add your examples](https://github.com/ademilter/bricklayer/issues/
 }
 ```
 
-- Make them bricks using `Bricklayer` class:
+##### Make them bricks using `Bricklayer` class:
 
 ```js
 var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
@@ -108,19 +107,54 @@ var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
 ### Methods
 - Add bricks dynamically:
 
+#### `append(element)`
+
+Allows you to append bricks.
+
 ```js
 bricklayer.append(
   myAwesomeElement
 )
 ```
 
+#### `prepend(element)`
+
+Allows you to prepend bricks.
+
+#### Appending/Prepending Multiple Elements at Once
+
 You can also add multiple bricks at once:
 
 ```js
-bricklayer.prepend([
+bricklayer.append([
   myAwesomeElement,
   myAwesomeButVeryLongElement
 ])
+```
+
+#### `destroy()`
+
+Destroys bricklayer and related auto-generated elements.
+
+```
+bricklayer.destroy()
+```
+
+To rebuild the Bricklayer for an element, you should rerun `Bricklayer`.
+
+```
+bricklayer = new Bricklayer(bricklayer.element)
+```
+
+#### `redraw(columnCount)`
+
+Redraws all columns with given `columnCount`. **If `columnCount` is `null`** it will be decided by
+media queries. **If browser size changes it will be recalculated.**
+
+In this example you'll force layout to be `5` columns.
+
+```js
+bricklayer.on("breakpoint", function () { bricklayer.redraw(5) })
 ```
 
 ### Events
@@ -163,11 +197,11 @@ bricklayer.on('breakpoint', function (e) {
 ### Built-in jQuery Support
 
 ```html
-<link rel="stylesheet" href="//npmcdn.com/bricklayer/dist/bricklayer.min.css">
-<script src="//npmcdn.com/bricklayer/dist/bricklayer.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.0/bricklayer.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.0/bricklayer.min.js"></script>
 
 <!-- You should also add jquery.bricklayer.js -->
-<script src="//npmcdn.com/bricklayer/dist/jquery.bricklayer.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.0/jquery.bricklayer.min.js"></script>
 ```
 
 Then you should enable plugin for your bricklayer elements.
