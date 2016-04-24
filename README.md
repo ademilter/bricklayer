@@ -65,7 +65,7 @@ You can also [add your examples](https://github.com/ademilter/bricklayer/issues/
 
 ---
 
-## Usage
+## Overview
 
 ##### Create a simple list:
 
@@ -104,8 +104,11 @@ You can also [add your examples](https://github.com/ademilter/bricklayer/issues/
 var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
 ```
 
+---
+
 ### Methods
-- Add bricks dynamically:
+
+With Bricklayer, you can add new bricks (some elements with heights) using `append` and `prepend`.
 
 #### `append(element)`
 
@@ -121,12 +124,23 @@ bricklayer.append(
 
 Allows you to prepend bricks.
 
+```js
+bricklayer.prepend(
+  myAwesomeElement
+)
+```
+
 #### Appending/Prepending Multiple Elements at Once
 
 You can also add multiple bricks at once:
 
 ```js
 bricklayer.append([
+  myAwesomeElement,
+  myAwesomeButVeryLongElement
+])
+
+bricklayer.prepend([
   myAwesomeElement,
   myAwesomeButVeryLongElement
 ])
@@ -140,7 +154,7 @@ Destroys bricklayer and related auto-generated elements.
 bricklayer.destroy()
 ```
 
-To rebuild the Bricklayer for an element, you should rerun `Bricklayer`.
+To rebuild the Bricklayer for an element, you should rerun `Bricklayer`:
 
 ```
 bricklayer = new Bricklayer(bricklayer.element)
@@ -154,6 +168,7 @@ media queries. **If browser size changes it will be recalculated.**
 In this example you'll force layout to be `5` columns.
 
 ```js
+// This example breaks responsiveness, not a very good idea.
 bricklayer.on("breakpoint", function () { bricklayer.redraw(5) })
 ```
 
