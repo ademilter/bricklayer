@@ -93,8 +93,9 @@ module Bricklayer {
       return this
     }
 
-    redraw(columnCount = this.columnCount) {
-      this.reorderElements(columnCount)
+    redraw() {
+      this.checkColumnCount(false)
+      this.reorderElements(this.columnCount)
     }
 
     destroy() {
@@ -133,10 +134,12 @@ module Bricklayer {
       return this.element.querySelectorAll(`:scope > *:not(.${this.options.columnClassName}):not(.${this.options.rulerClassName})`)
     }
 
-    private checkColumnCount() {
+    private checkColumnCount(publish = true) {
       var columnCount = this.getColumnCount()
       if (this.columnCount !== columnCount) {
-        triggerEvent(this.element, "bricklayer.breakpoint", {columnCount})
+        if (publish) {
+          triggerEvent(this.element, "bricklayer.breakpoint", {columnCount})
+        }
         this.columnCount = columnCount
       }
     }

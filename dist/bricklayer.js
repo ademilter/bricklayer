@@ -92,9 +92,9 @@ var Bricklayer;
             this.element.addEventListener("bricklayer." + eventName, handler);
             return this;
         };
-        Container.prototype.redraw = function (columnCount) {
-            if (columnCount === void 0) { columnCount = this.columnCount; }
-            this.reorderElements(columnCount);
+        Container.prototype.redraw = function () {
+            this.checkColumnCount(false);
+            this.reorderElements(this.columnCount);
         };
         Container.prototype.destroy = function () {
             var _this = this;
@@ -128,10 +128,13 @@ var Bricklayer;
         Container.prototype.getElementsInOrder = function () {
             return this.element.querySelectorAll(":scope > *:not(." + this.options.columnClassName + "):not(." + this.options.rulerClassName + ")");
         };
-        Container.prototype.checkColumnCount = function () {
+        Container.prototype.checkColumnCount = function (publish) {
+            if (publish === void 0) { publish = true; }
             var columnCount = this.getColumnCount();
             if (this.columnCount !== columnCount) {
-                triggerEvent(this.element, "bricklayer.breakpoint", { columnCount: columnCount });
+                if (publish) {
+                    triggerEvent(this.element, "bricklayer.breakpoint", { columnCount: columnCount });
+                }
                 this.columnCount = columnCount;
             }
         };

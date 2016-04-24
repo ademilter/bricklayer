@@ -38,8 +38,8 @@ Lightweight & independent cascading grid layout library. Inspired by and a light
 ## Installation
 
 ```html
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.0/bricklayer.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.0/bricklayer.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.1/bricklayer.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.1/bricklayer.min.js"></script>
 ```
 
 If you are using modular JavaScript, you can use **NPM** or **Bower**
@@ -110,7 +110,7 @@ var bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
 
 With Bricklayer, you can add new bricks (some elements with heights) using `append` and `prepend`.
 
-#### `append(element)`
+#### `append(element)` to add new element to bottom
 
 Allows you to append bricks.
 
@@ -120,7 +120,7 @@ bricklayer.append(
 )
 ```
 
-#### `prepend(element)`
+#### `prepend(element)` to add new element to top
 
 Allows you to prepend bricks.
 
@@ -130,9 +130,9 @@ bricklayer.prepend(
 )
 ```
 
-#### Appending/Prepending Multiple Elements at Once
+#### `append`/`prepend` multiple elements at once
 
-You can also add multiple bricks at once:
+You can also add multiple bricks at once by giving an array of elements:
 
 ```js
 bricklayer.append([
@@ -146,7 +146,7 @@ bricklayer.prepend([
 ])
 ```
 
-#### `destroy()`
+#### `destroy()` to destroy Bricklayer
 
 Destroys bricklayer and related auto-generated elements.
 
@@ -160,16 +160,13 @@ To rebuild the Bricklayer for an element, you should rerun `Bricklayer`:
 bricklayer = new Bricklayer(bricklayer.element)
 ```
 
-#### `redraw(columnCount)`
+#### `redraw()` to reload all the elements
 
-Redraws all columns with given `columnCount`. **If `columnCount` is `null`** it will be decided by
-media queries. **If browser size changes it will be recalculated.**
-
-In this example you'll force layout to be `5` columns.
+Redraws all columns. Column counts will be recalculated and it rebuilds columns
+with elements.
 
 ```js
-// This example breaks responsiveness, not a very good idea.
-bricklayer.on("breakpoint", function () { bricklayer.redraw(5) })
+bricklayer.redraw()
 ```
 
 ### Events
@@ -212,11 +209,11 @@ bricklayer.on('breakpoint', function (e) {
 ### Built-in jQuery Support
 
 ```html
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.0/bricklayer.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.0/bricklayer.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.1/bricklayer.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.1/bricklayer.min.js"></script>
 
 <!-- You should also add jquery.bricklayer.js -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.0/jquery.bricklayer.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.1/jquery.bricklayer.min.js"></script>
 ```
 
 Then you should enable plugin for your bricklayer elements.
