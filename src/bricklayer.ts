@@ -94,14 +94,17 @@ module Bricklayer {
     }
 
     redraw() {
+      var {columnCount} = this
       this.checkColumnCount(false)
-      this.reorderElements(this.columnCount)
+      this.reorderElements(columnCount)
+      triggerEvent(this.element, "bricklayer.redraw", {columnCount})
     }
 
     destroy() {
       this.ruler.destroy()
       toArray(this.elements).forEach(el => this.element.appendChild(el))
       toArray(this.getColumns()).forEach(el => el.parentNode.removeChild(el))
+      triggerEvent(this.element, "bricklayer.destroy", {})
     }
 
     private build() {

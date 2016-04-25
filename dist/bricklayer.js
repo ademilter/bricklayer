@@ -93,14 +93,17 @@ var Bricklayer;
             return this;
         };
         Container.prototype.redraw = function () {
+            var columnCount = this.columnCount;
             this.checkColumnCount(false);
-            this.reorderElements(this.columnCount);
+            this.reorderElements(columnCount);
+            triggerEvent(this.element, "bricklayer.redraw", { columnCount: columnCount });
         };
         Container.prototype.destroy = function () {
             var _this = this;
             this.ruler.destroy();
             toArray(this.elements).forEach(function (el) { return _this.element.appendChild(el); });
             toArray(this.getColumns()).forEach(function (el) { return el.parentNode.removeChild(el); });
+            triggerEvent(this.element, "bricklayer.destroy", {});
         };
         Container.prototype.build = function () {
             this.ruler = new Ruler(this.options.rulerClassName);

@@ -1,17 +1,15 @@
 <img src="https://raw.githubusercontent.com/ademilter/bricklayer/master/logo.png" width="416">
 ---
 
-
 [![Join the chat at https://gitter.im/ademilter/bricklayer](https://badges.gitter.im/ademilter/bricklayer.svg)](https://gitter.im/ademilter/bricklayer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![npm version](https://badge.fury.io/js/bricklayer.svg)](https://badge.fury.io/js/bricklayer)
 [![Bower version](https://badge.fury.io/bo/bricklayer.svg)](https://badge.fury.io/bo/bricklayer)
-
 
 Lightweight and independent Pinterest-like cascading grid layout library.
 
 [**Play with example** :point_right:](http://ademilter.github.io/bricklayer)
 
-[![Image](https://rawgit.com/ademilter/bricklayer/master/assets/screenshot.gif)](http://ademilter.github.io/bricklayer)
+[![Image](assets/screenshot.gif)](http://ademilter.github.io/bricklayer)
 
 ## Why Bricklayer?
 
@@ -43,23 +41,27 @@ Lightweight and independent Pinterest-like cascading grid layout library.
 ```
 
 If you are using modular JavaScript, you can use **NPM** or **Bower**
-```
-npm install bricklayer # using npm
-```
 
 ```
-bower install bricklayer # or using bower
+npm install bricklayer
+bower install bricklayer
 ```
 
-## Bricklayer with Frameworks
+## Plugins
+
+| Extension | Description | Vendor | Demo |
+| --------- | ----------- | ------ | ---- |
+| [bricklayer-jquery](src/plugins/jquery/README.md) | Adds jQuery support as jQuery plugin | Official | [http://codepen.io/f/pen/zqLJNa](http://codepen.io/f/pen/zqLJNa) |
+| [bricklayer-lazyElement](src/plugins/lazyElement/README.md) | Adds lazy element appending/prepending support. Useful for **adding lazily loaded elements like images or ajax** | Official | N/A |
+
+## Bricklayer with Popular Frameworks
 
 Since Bricklayer is purely vanilla, you can use it with your frameworks. Here some framework examples:
 
 | Framework | How to use? | Playground |
 | --------- | -------------------- | ---------- |
-| **jQuery** | [Built-in Support](https://github.com/ademilter/bricklayer/blob/master/README.md#built-in-jquery-support) (Add `jquery.bricklayer.js`) | [http://codepen.io/f/pen/zqLJNa](http://codepen.io/f/pen/zqLJNa) |
-| **React** | Built-in Support (Check out Playground) | [http://www.webpackbin.com/V1L4KdVeW](http://www.webpackbin.com/V1L4KdVeW) |
 | **Angular.js** | You can use [JohnnyTheTank/angular-bricklayer](https://github.com/JohnnyTheTank/angular-bricklayer) | [http://plnkr.co/edit/mo3G36](http://plnkr.co/edit/mo3G36?p=info) |
+| **React** | Built-in Support (Check out Playground) | [http://www.webpackbin.com/V1L4KdVeW](http://www.webpackbin.com/V1L4KdVeW) |
 
 You can also [add your examples](https://github.com/ademilter/bricklayer/issues/new?title=Bricklayer%20Framework%20Example) to the list!
 
@@ -150,7 +152,7 @@ bricklayer.prepend([
 
 Destroys bricklayer and related auto-generated elements.
 
-```
+```js
 bricklayer.destroy()
 ```
 
@@ -175,63 +177,97 @@ You can add listeners to Bricklayer for full control. These allow you to
 create more extensible layouts. You can use these events especially for
 animations. Please see examples.
 
+#### Layout Based Events
+
+They are useful when you want to detect if the layout is changed, gives information about Bricklayer's lifecycle.
+
+##### `breakpoint`
+
+It will be fired when browser is resized and CSS media query breakpoint changes. `event.detail` gives calculated `columnCount`.
+
 ```js
-bricklayer.on('beforeAppend', function (e) {
-  var itemElement = e.detail.item
-  var columnElement = e.detail.column
-  // `itemElement` will be appended to the end of `columnElement`
-})
-
-bricklayer.on('beforePrepend', function (e) {
-  var itemElement = e.detail.item
-  var columnElement = e.detail.column
-  // `itemElement` will be prepended to the top of `columnElement`
-})
-
-bricklayer.on('afterAppend', function (e) {
-  var itemElement = e.detail.item
-  var columnElement = e.detail.column
-  // `itemElement` is appended to the end of `columnElement`
-})
-
-bricklayer.on('afterPrepend', function (e) {
-  var itemElement = e.detail.item
-  var columnElement = e.detail.column
-  // `itemElement` is prepended to the top of `columnElement`
-})
-
 bricklayer.on('breakpoint', function (e) {
   var columnCount = e.detail.columnCount
   // In every breakpoint, this event will be fired with the count of columns
 })
 ```
 
-### Built-in jQuery Support
+##### `redraw`
 
-```html
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.1/bricklayer.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.1/bricklayer.min.js"></script>
+It will be fired when something called `redraw` method. `event.detail` gives calculated `columnCount`.
 
-<!-- You should also add jquery.bricklayer.js -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.1/jquery.bricklayer.min.js"></script>
-```
-
-Then you should enable plugin for your bricklayer elements.
 ```js
-// Initialize
-$(".bricklayer").bricklayer()
-
-// Append Elements
-$(".bricklayer").appendElements(elements)
-
-// Prepend Elements
-$(".bricklayer").prependElements(elements)
-
-// Listen Events (bricklayer.breakpoint, bricklayer.afterAppend, bricklayer.afterPrepend, bricklayer.beforeAppend, bricklayer.beforePrepend)
-$(".bricklayer").on("bricklayer.breakpoint", handlerFunction)
+bricklayer.on('redraw', function (e) {
+  var columnCount = e.detail.columnCount
+  // In every breakpoint, this event will be fired with the count of columns
+})
 ```
 
-For more information you can [play on playground](http://codepen.io/f/pen/zqLJNa).
+##### `destroy`
+
+It will be fired when `destroy` method is called and the Bricklayer is destroyed.
+
+```js
+bricklayer.on('destroy', function (e) {
+  // Bricklayer is destroyed :(
+})
+```
+
+#### Element Based Events
+
+They are useful when you want to make **animations** or element based works.
+
+##### `beforeAppend`
+
+It will be fired just before a brick **appends** to a column. `event.detail` gives `item` and `column`
+as DOM elements.
+
+```js
+bricklayer.on('beforeAppend', function (e) {
+  var itemElement = e.detail.item
+  var columnElement = e.detail.column
+  // `itemElement` will be appended to the end of `columnElement`
+})
+```
+
+#### `beforePrepend`
+
+It will be fired just before a brick **prepends** to a column. `event.detail` gives `item` and `column`
+as DOM elements.
+
+```js
+bricklayer.on('beforePrepend', function (e) {
+  var itemElement = e.detail.item
+  var columnElement = e.detail.column
+  // `itemElement` will be prepended to the top of `columnElement`
+})
+```
+
+#### `afterAppend`
+
+It will be fired just after a brick **appended** to a column. `event.detail` gives `item` and `column`
+as DOM elements.
+
+```js
+bricklayer.on('afterAppend', function (e) {
+  var itemElement = e.detail.item
+  var columnElement = e.detail.column
+  // `itemElement` is appended to the end of `columnElement`
+})
+```
+
+#### `afterPrepend`
+
+It will be fired just after a brick **prepended** to a column. `event.detail` gives `item` and `column`
+as DOM elements.
+
+```js
+bricklayer.on('afterPrepend', function (e) {
+  var itemElement = e.detail.item
+  var columnElement = e.detail.column
+  // `itemElement` is prepended to the top of `columnElement`
+})
+```
 
 ## Are you using Bricklayer.js for your next project?
 
@@ -239,12 +275,7 @@ For more information you can [play on playground](http://codepen.io/f/pen/zqLJNa
 
 ## Browser Support
 
-This plugin works seamlessly with these browsers:
-  - Safari 9.0.2
-  - Firefox 43.0.4
-  - Chrome 49
-
-Please add more and open a pull request if you tested successfully on other browsers.
+This plugin works seamlessly with, Safari, Firefox, Chrome and all other modern browsers.
 
 ## Contribution
 

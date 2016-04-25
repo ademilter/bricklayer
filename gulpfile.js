@@ -39,16 +39,16 @@ gulp.task("js", function () {
     .pipe(gulp.dest('./dist'));
 })
 
-gulp.task("jquery", function () {
-  gulp.src('src/jquery.bricklayer.js')
-    .pipe(gulp.dest("./dist"))
+gulp.task("plugins", function () {
+  gulp.src('src/plugins/**/*.js')
+    .pipe(gulp.dest("./dist/plugins"))
 })
 
-gulp.task("jquerymin", function () {
-  gulp.src('src/jquery.bricklayer.js')
+gulp.task("pluginsmin", function () {
+  gulp.src('src/plugins/**/*.js')
     .pipe(uglify())
     .pipe(rename({suffix: ".min"}))
-    .pipe(gulp.dest("./dist"))
+    .pipe(gulp.dest("./dist/plugins"))
 })
 
 gulp.task("browserify", function () {
@@ -82,4 +82,4 @@ gulp.task("watch", ["css", "js"], function () {
 })
 
 gulp.task("default", ["watch"])
-gulp.task("export", ["css", "cssmin", "js", "browserify", "jsmin", "jquery", "jquerymin"])
+gulp.task("export", ["css", "cssmin", "js", "browserify", "jsmin", "plugins", "pluginsmin"])
