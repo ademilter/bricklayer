@@ -16,7 +16,7 @@
  - :skull: **No inline styles**, static positioning.
  - :package: Integrates with **jQuery**, **Angular.js** and **React.js** easily.
 
-[Read Tutorial and Documentation →](Quick-Start)
+[Read Tutorial and Documentation →](https://github.com/ademilter/bricklayer/wiki/Quick-Start)
 
 ---
 
