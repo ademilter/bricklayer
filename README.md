@@ -6,7 +6,7 @@
 [![npm version](https://badge.fury.io/js/bricklayer.svg)](https://badge.fury.io/js/bricklayer)
 [![Bower version](https://badge.fury.io/bo/bricklayer.svg)](https://badge.fury.io/bo/bricklayer)
 
----
+[![Image](https://rawgit.com/ademilter/bricklayer/master/assets/screenshot.gif)](http://ademilter.github.io/bricklayer)
 
  - :gem: **Simpler** than any other cascading grid layout tools.
  - :snowflake: **Lightweight**, no fat. **(1.5KB gzipped)**
@@ -19,8 +19,6 @@
 [Read Tutorial and Documentation →](https://github.com/ademilter/bricklayer/wiki/Quick-Start)
 
 ---
-
-[![Image](https://rawgit.com/ademilter/bricklayer/master/assets/screenshot.gif)](http://ademilter.github.io/bricklayer)
 
 ## Playgrounds
 
