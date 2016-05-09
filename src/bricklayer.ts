@@ -93,6 +93,11 @@ module Bricklayer {
       return this
     }
 
+    off(eventName, handler) {
+      this.element.removeEventListener(`bricklayer.${eventName}`, handler)
+      return this
+    }
+
     redraw() {
       var {columnCount} = this
       this.checkColumnCount(false)
