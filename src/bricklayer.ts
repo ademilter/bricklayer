@@ -148,10 +148,6 @@ module Bricklayer {
     }
 
     private reorderElements(columnCount : number = 1) {
-      if (columnCount == Infinity || columnCount < 1) {
-        columnCount = 1
-      }
-
       var elements = toArray(this.elements).map(item => {
         let element = item.parentNode ? item.parentNode.removeChild(item) : item
         return element
@@ -176,6 +172,11 @@ module Bricklayer {
     private getColumnCount() {
       var containerWidth = this.element.offsetWidth
       var columnWidth = this.ruler.getWidth()
+
+      if (columnWidth == 0) {
+        return 1
+      }
+
       return Math.round(containerWidth / columnWidth)
     }
 
