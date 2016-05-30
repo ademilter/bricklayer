@@ -1,6 +1,6 @@
 {
   "name": "bricklayer",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Lightweight and strong Masonry alternative",
   "main": "dist/bricklayer-node.js",
   "scripts": {
