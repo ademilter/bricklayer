@@ -39,7 +39,7 @@ var Bricklayer;
             _super.apply(this, arguments);
         }
         Ruler.prototype.getWidth = function () {
-            this.element.setAttribute('style', "\n        display: block;\n        visibility: hidden !important;\n        top: -1000px !important;\n      ");
+            this.element.setAttribute('style', "display: block; visibility: hidden !important; top: -1000px !important;");
             var width = this.element.offsetWidth;
             this.element.removeAttribute('style');
             return width;
@@ -97,23 +97,41 @@ var Bricklayer;
             this.reorderElements(columnCount);
             triggerEvent(this.element, "bricklayer.redraw", { columnCount: columnCount });
         };
-        Container.prototype.destroy = function () {
+        Container.prototype.destroy = function (reset) {
             var _this = this;
-            this.ruler.destroy();
+            if (reset === void 0) { reset = false; }
+            if (!reset) {
+                this.ruler.destroy();
+            }
             toArray(this.elements).forEach(function (el) { return _this.element.appendChild(el); });
             toArray(this.getColumns()).forEach(function (el) { return el.parentNode.removeChild(el); });
-            triggerEvent(this.element, "bricklayer.destroy", {});
+            if (!reset) {
+                triggerEvent(this.element, "bricklayer.destroy", {});
+            }
         };
-        Container.prototype.build = function () {
-            this.ruler = new Ruler(this.options.rulerClassName);
+        Container.prototype.reset = function () {
+            this.destroy(true);
+            this.build(true);
+            this.buildResponsive(true);
+        };
+        Container.prototype.build = function (reset) {
+            if (reset === void 0) { reset = false; }
+            if (!reset) {
+                this.ruler = new Ruler(this.options.rulerClassName);
+            }
             this.elements = this.getElementsInOrder();
             this.element.insertBefore(this.ruler.element, this.element.firstChild);
         };
-        Container.prototype.buildResponsive = function () {
+        Container.prototype.buildResponsive = function (reset) {
             var _this = this;
-            window.addEventListener("resize", function (e) { return _this.checkColumnCount(); });
+            if (reset === void 0) { reset = false; }
+            if (!reset) {
+                window.addEventListener("resize", function (e) { return _this.checkColumnCount(); });
+            }
             this.checkColumnCount();
-            this.on("breakpoint", function (e) { return _this.reorderElements(e.detail.columnCount); });
+            if (!reset) {
+                this.on("breakpoint", function (e) { return _this.reorderElements(e.detail.columnCount); });
+            }
             if (this.columnCount >= 1) {
                 this.reorderElements(this.columnCount);
             }
