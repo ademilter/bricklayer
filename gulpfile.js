@@ -82,4 +82,4 @@ gulp.task("watch", ["css", "js"], function () {
 })
 
 gulp.task("default", ["watch"])
-gulp.task("export", ["css", "cssmin", "js", "browserify", "jsmin", "plugins", "pluginsmin"])
+gulp.task("export", ["css", "cssmin", "browserify", "js", "jsmin", "plugins", "pluginsmin"])
