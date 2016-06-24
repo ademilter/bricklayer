@@ -97,41 +97,36 @@ var Bricklayer;
             this.reorderElements(columnCount);
             triggerEvent(this.element, "bricklayer.redraw", { columnCount: columnCount });
         };
-        Container.prototype.destroy = function (reset) {
+        Container.prototype.destroy = function () {
             var _this = this;
-            if (reset === void 0) { reset = false; }
-            if (!reset) {
-                this.ruler.destroy();
-            }
+            this.ruler.destroy();
             toArray(this.elements).forEach(function (el) { return _this.element.appendChild(el); });
             toArray(this.getColumns()).forEach(function (el) { return el.parentNode.removeChild(el); });
-            if (!reset) {
-                triggerEvent(this.element, "bricklayer.destroy", {});
-            }
+            triggerEvent(this.element, "bricklayer.destroy", {});
         };
-        Container.prototype.reset = function () {
-            this.destroy(true);
-            this.build(true);
-            this.buildResponsive(true);
+        Container.prototype.unmount = function () {
+            var _this = this;
+            toArray(this.elements).forEach(function (el) { return _this.element.appendChild(el); });
+            toArray(this.getColumns()).forEach(function (el) { return el.parentNode.removeChild(el); });
         };
-        Container.prototype.build = function (reset) {
-            if (reset === void 0) { reset = false; }
-            if (!reset) {
-                this.ruler = new Ruler(this.options.rulerClassName);
-            }
+        Container.prototype.build = function () {
+            this.ruler = new Ruler(this.options.rulerClassName);
             this.elements = this.getElementsInOrder();
             this.element.insertBefore(this.ruler.element, this.element.firstChild);
         };
-        Container.prototype.buildResponsive = function (reset) {
+        Container.prototype.buildResponsive = function () {
             var _this = this;
-            if (reset === void 0) { reset = false; }
-            if (!reset) {
-                window.addEventListener("resize", function (e) { return _this.checkColumnCount(); });
-            }
+            window.addEventListener("resize", function (e) { return _this.checkColumnCount(); });
             this.checkColumnCount();
-            if (!reset) {
-                this.on("breakpoint", function (e) { return _this.reorderElements(e.detail.columnCount); });
+            this.on("breakpoint", function (e) { return _this.reorderElements(e.detail.columnCount); });
+            if (this.columnCount >= 1) {
+                this.reorderElements(this.columnCount);
             }
+        };
+        Container.prototype.mount = function () {
+            this.elements = this.getElementsInOrder();
+            this.element.insertBefore(this.ruler.element, this.element.firstChild);
+            this.checkColumnCount();
             if (this.columnCount >= 1) {
                 this.reorderElements(this.columnCount);
             }
