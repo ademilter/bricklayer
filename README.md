@@ -29,6 +29,9 @@
 
 [Let us know](https://github.com/ademilter/bricklayer/issues/new?title=We%20use%20bricklayer,%20too!&body=Please%20add%20this%20to%20the%20list!%0A%0AWebsite:%20%3Curl%3E%0ATitle:%20%3Ca%20short%20title%3E%0A%0A%3Cany%20description%3E) if you use this awesome library in your project and we'll add here!
 
+These are the sites using Bricklayer!
+- [Fascinating Nepal Photo Gallery](http://www.fascinatingnepal.com/photo-gallery/)
+
 ## Browser Support
 
 This plugin works seamlessly with, Safari, Firefox, Chrome and all other modern browsers.
