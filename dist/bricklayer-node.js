@@ -39,7 +39,7 @@ var Bricklayer;
             _super.apply(this, arguments);
         }
         Ruler.prototype.getWidth = function () {
-            this.element.setAttribute('style', "\n        display: block;\n        visibility: hidden !important;\n        top: -1000px !important;\n      ");
+            this.element.setAttribute('style', "display: block; visibility: hidden !important; top: -1000px !important;");
             var width = this.element.offsetWidth;
             this.element.removeAttribute('style');
             return width;
@@ -104,6 +104,11 @@ var Bricklayer;
             toArray(this.getColumns()).forEach(function (el) { return el.parentNode.removeChild(el); });
             triggerEvent(this.element, "bricklayer.destroy", {});
         };
+        Container.prototype.unmount = function () {
+            var _this = this;
+            toArray(this.elements).forEach(function (el) { return _this.element.appendChild(el); });
+            toArray(this.getColumns()).forEach(function (el) { return el.parentNode.removeChild(el); });
+        };
         Container.prototype.build = function () {
             this.ruler = new Ruler(this.options.rulerClassName);
             this.elements = this.getElementsInOrder();
@@ -114,6 +119,14 @@ var Bricklayer;
             window.addEventListener("resize", function (e) { return _this.checkColumnCount(); });
             this.checkColumnCount();
             this.on("breakpoint", function (e) { return _this.reorderElements(e.detail.columnCount); });
+            if (this.columnCount >= 1) {
+                this.reorderElements(this.columnCount);
+            }
+        };
+        Container.prototype.mount = function () {
+            this.elements = this.getElementsInOrder();
+            this.element.insertBefore(this.ruler.element, this.element.firstChild);
+            this.checkColumnCount();
             if (this.columnCount >= 1) {
                 this.reorderElements(this.columnCount);
             }
