@@ -4,7 +4,7 @@ interface IOptions {
 }
 
 module Bricklayer {
-
+  
   // Helper Functions
   function toArray(arrayLike : {length : number}) {
     return [].slice.call(arrayLike)
@@ -82,13 +82,26 @@ module Bricklayer {
       this.applyPosition('prepend', column, item)
     }
 
+    remove(item) {
+      if (Array.isArray(item)) {
+        item.forEach(item => this.remove(item))
+        return
+      }
+      let index = this.elements.indexOf(item);
+      this.elements.splice(index, 1);
+      let column = item.closest(".bricklayer-column");
+      this.applyPosition('remove', column, item);
+    }
+
     on(eventName, handler) {
       // eventName may be:
       // - breakpoint
-      // - afterAppend
       // - beforeAppend
-      // - afterPrepend
+      // - afterAppend
       // - beforePrepend
+      // - afterPrepend
+      // - beforeRemove
+      // - afterRemove
       this.element.addEventListener(`bricklayer.${eventName}`, handler)
       return this
     }
@@ -193,11 +206,42 @@ module Bricklayer {
         case 'prepend':
           column.insertBefore(item, column.firstChild)
           break
+        case 'remove':
+          column.removeChild(item);
+          this.redraw();
+          break
       }
       trigger('after')
     }
 
   }
+}
+
+// Polyfills
+interface Element{
+  matches(selectors: string);
+  closest(selector: string);
+}
+
+if (!Element.prototype.matches) {
+  Element.prototype.matches = Element.prototype.msMatchesSelector
+    || Element.prototype.webkitMatchesSelector;
+}
+
+if (!Element.prototype.closest) {
+  Element.prototype.closest = function (selector) {
+    var element = this;
+    if (!document.documentElement.contains(element))
+      return null;
+
+    do {
+      if (element.matches(selector))
+        return element;
+      element = element.parentElement;
+    } while (element !== null);
+
+    return null;
+  };
 }
 
 declare var define
