@@ -36,7 +36,7 @@ bricklayer.on("afterAppend", function (e) {
 var buttons = document.querySelectorAll("button");
 
 function goToScroll(value) {
-  document.body.scrollTop = value
+  document.documentElement.scrollTop = value
 }
 Array.prototype.slice.call(buttons).forEach(function (button) {
   button.addEventListener('click', function (e) {
