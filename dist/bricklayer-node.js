@@ -10,7 +10,7 @@ var Bricklayer;
         return [].slice.call(arrayLike);
     }
     function triggerEvent(el, eventName, data) {
-        if (window["CustomEvent"]) {
+        if (window["CustomEvent"] && typeof window["CustomEvent"] === 'function') {
             var event = new CustomEvent(eventName, { detail: data });
         }
         else {
