@@ -93,6 +93,11 @@ module Bricklayer {
       return this
     }
 
+    off(eventName, handler) {
+      this.element.removeEventListener(`bricklayer.${eventName}`, handler)
+      return this
+    }
+
     redraw() {
       var {columnCount} = this
       this.checkColumnCount(false)
@@ -128,9 +133,17 @@ module Bricklayer {
 
     private findMinHeightColumn() {
       var allColumns = toArray(this.getColumns())
-      let heights = allColumns.map(column => column.offsetHeight)
+      let heights = allColumns.map(childrenHeight)
       let minHeight = Math.min.apply(null, heights)
       return allColumns[heights.indexOf(minHeight)]
+
+      function childrenHeight(container) {
+        return toArray(container.children).map(outerHeight).reduce((sum, h) => sum + h, 0)
+      }
+
+      function outerHeight(element) {
+        return parseFloat(getComputedStyle(element).getPropertyValue('height'))
+      }
     }
 
     private getElementsInOrder() {
