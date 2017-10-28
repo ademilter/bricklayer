@@ -82,13 +82,26 @@ var Bricklayer;
             this.elements = [item].concat(toArray(this.elements));
             this.applyPosition('prepend', column, item);
         };
+        Container.prototype.remove = function (item) {
+            var _this = this;
+            if (Array.isArray(item)) {
+                item.forEach(function (item) { return _this.remove(item); });
+                return;
+            }
+            var index = this.elements.indexOf(item);
+            this.elements.splice(index, 1);
+            var column = item.closest(".bricklayer-column");
+            this.applyPosition('remove', column, item);
+        };
         Container.prototype.on = function (eventName, handler) {
             // eventName may be:
             // - breakpoint
-            // - afterAppend
             // - beforeAppend
-            // - afterPrepend
+            // - afterAppend
             // - beforePrepend
+            // - afterPrepend
+            // - beforeRemove
+            // - afterRemove
             this.element.addEventListener("bricklayer." + eventName, handler);
             return this;
         };
@@ -183,6 +196,10 @@ var Bricklayer;
                 case 'prepend':
                     column.insertBefore(item, column.firstChild);
                     break;
+                case 'remove':
+                    column.removeChild(item);
+                    this.redraw();
+                    break;
             }
             trigger('after');
         };
@@ -190,6 +207,23 @@ var Bricklayer;
     }());
     Bricklayer.Container = Container;
 })(Bricklayer || (Bricklayer = {}));
+if (!Element.prototype.matches) {
+    Element.prototype.matches = Element.prototype.msMatchesSelector
+        || Element.prototype.webkitMatchesSelector;
+}
+if (!Element.prototype.closest) {
+    Element.prototype.closest = function (selector) {
+        var element = this;
+        if (!document.documentElement.contains(element))
+            return null;
+        do {
+            if (element.matches(selector))
+                return element;
+            element = element.parentElement;
+        } while (element !== null);
+        return null;
+    };
+}
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(function () { return factory(); });
