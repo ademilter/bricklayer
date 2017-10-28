@@ -11,7 +11,7 @@ module Bricklayer {
   }
 
   function triggerEvent(el, eventName : string, data) {
-    if (window["CustomEvent"]) {
+    if (window["CustomEvent"] && typeof window["CustomEvent"] === 'function') {
       var event = new CustomEvent(eventName, {detail: data});
     } else {
       var event = document.createEvent('CustomEvent');
