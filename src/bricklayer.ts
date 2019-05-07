@@ -128,7 +128,7 @@ module Bricklayer {
 
     private findMinHeightColumn() {
       var allColumns = toArray(this.getColumns())
-      let heights = allColumns.map(column => column.offsetHeight)
+      let heights = allColumns.map(column => column.offsetHeight + column.offsetTop)
       let minHeight = Math.min.apply(null, heights)
       return allColumns[heights.indexOf(minHeight)]
     }
